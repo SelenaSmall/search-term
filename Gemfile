@@ -47,6 +47,14 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'pry-byebug'
   gem 'better_errors', '2.1.1'
+
+  ### TESTING
+  ### =========
+  gem 'rspec-rails'
+  gem 'rspec-example_steps'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'rspec-wait'
 end
 
 group :development do
