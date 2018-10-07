@@ -6,8 +6,9 @@ import {
     Row,
     Col,
     Jumbotron,
-    Button
 } from 'reactstrap';
+import { Link } from 'react-router-dom'
+
 
 const Game = () => (
     <div>
@@ -20,11 +21,9 @@ const Game = () => (
 <Col>
 <h1>Welcome to the Game</h1>
 <p>
-<Button
-color="success"
-size="large"
-    >Start Game
-</Button>
+
+<Link to="/round">Start Game</Link>
+
 </p>
 </Col>
 </Row>

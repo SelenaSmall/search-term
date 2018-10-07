@@ -38,13 +38,12 @@ exports[`snapshot testing 1`] = `
             Welcome to the Game
           </h1>
           <p>
-            <Button
-              color="success"
-              size="large"
-              tag="button"
+            <Link
+              replace={false}
+              to="/round"
             >
               Start Game
-            </Button>
+            </Link>
           </p>
         </Col>
       </Row>

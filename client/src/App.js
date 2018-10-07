@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Game from './components/Game'
+import Routes from './Routes'
+import { BrowserRouter } from 'react-router-dom'
 
 class App extends Component {
     constructor(props) {
@@ -8,9 +10,9 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                <Game />
-            </div>
+            <BrowserRouter>
+                <Routes />
+            </BrowserRouter>
     );
     }
 }
