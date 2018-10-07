@@ -42,12 +42,9 @@ class App extends Component {
             <h1>Welcome to the Game</h1>
         <p>
         <Button
-        tag="a"
         color="success"
         size="large"
-        href="http://reactstrap.github.io"
-        target="_blank"
-            >
+            >Start Game
         </Button>
         </p>
         </Col>
