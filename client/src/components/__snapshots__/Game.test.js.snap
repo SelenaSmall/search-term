@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot testing 1`] = `
+<div>
+  <Navbar
+    color="inverse"
+    expand="md"
+    light={true}
+    tag="nav"
+  >
+    <NavbarBrand
+      href="/"
+      tag="a"
+    />
+  </Navbar>
+  <Jumbotron
+    tag="div"
+  >
+    <Container
+      tag="div"
+    >
+      <Row
+        tag="div"
+      >
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+        >
+          <h1>
+            Welcome to the Game
+          </h1>
+          <p>
+            <Button
+              color="success"
+              size="large"
+              tag="button"
+            >
+              Start Game
+            </Button>
+          </p>
+        </Col>
+      </Row>
+    </Container>
+  </Jumbotron>
+</div>
+`;
