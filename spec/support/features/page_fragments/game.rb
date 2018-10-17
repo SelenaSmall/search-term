@@ -3,5 +3,9 @@ module PageFragments
     def round
       browser.find('.round').text
     end
+
+    def images
+      browser.find_all('.image')
+    end
   end
 end

@@ -10,8 +10,19 @@ feature 'Game play lifecycle', js: true do
     end
 
     Then 'the game commences' do
-      pending 'start game button doesnt start a game!'
       wait_for { focus_on(:game).round }.to eq('1')
+
+      pending 'There are no images!'
+      wait_for { focus_on(:game).images.count }.to eq('1')
     end
+
+    When 'the user submits an answer'
+    # fill in form
+    # click submit
+
+    Then 'the user wins'
+    # timer stops
+    # see text 'WINNER'
+    # see button 'play again'
   end
 end
