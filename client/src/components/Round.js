@@ -11,7 +11,7 @@ class Round extends Component {
 
   fetchRoundData() {
     const { round } = this.state;
-    API.fetchRoundData( { round } ).then((data) => {
+    API.fetchRoundData(round).then((data) => {
       this.setState(data)
     })
   }
