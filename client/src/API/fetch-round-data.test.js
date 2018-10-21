@@ -20,3 +20,13 @@ it('should request data from the backend for a given round', () => {
     }
   ]);
 })
+
+it('should return data from response', async () => {
+  const data = { key: 'value1' };
+  const response = { data };
+  axios.get = () => Promise.resolve(response);
+
+  const returnData = await fetchRoundData(1);
+
+  expect(returnData).toEqual({ key: 'value1' });
+});
