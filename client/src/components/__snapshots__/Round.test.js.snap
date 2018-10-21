@@ -1,5 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`calls api to get all images on construction 1`] = `
+<div>
+  <Link
+    replace={false}
+    to="/"
+  >
+    Start Game
+  </Link>
+  <h3>
+    Round 
+    <span
+      className="round"
+    >
+      1
+    </span>
+  </h3>
+  <div>
+    <img
+      alt="nice try"
+      className="image"
+      key="abc-Xyz"
+      src="image_1.jpg"
+    />
+    <img
+      alt="nice try"
+      className="image"
+      key="abc-Xyz"
+      src="image_1.jpg"
+    />
+  </div>
+</div>
+`;
+
 exports[`snapshot testing 1`] = `
 <div>
   <Link
@@ -16,5 +49,6 @@ exports[`snapshot testing 1`] = `
       1
     </span>
   </h3>
+  <div />
 </div>
 `;
