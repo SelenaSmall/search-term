@@ -34,5 +34,5 @@ it('calls api to get all images on construction', () => {
   roundDataPromise.then(() => {
     expect(shallowToJson(output)).toMatchSnapshot();
   })
-  expect(fetchRoundDataCalls).toEqual([{ round: 1 }]);
+  expect(fetchRoundDataCalls).toEqual([1]);
 });

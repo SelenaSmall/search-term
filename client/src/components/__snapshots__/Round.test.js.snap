@@ -16,6 +16,11 @@ exports[`calls api to get all images on construction 1`] = `
       1
     </span>
   </h3>
+  <span
+    className="status"
+  >
+    IN-PROGRESS
+  </span>
   <div>
     <img
       alt="nice try"
@@ -28,6 +33,11 @@ exports[`calls api to get all images on construction 1`] = `
       className="image"
       key="abc-Xyz"
       src="image_1.jpg"
+    />
+  </div>
+  <div>
+    <input
+      className="guess"
     />
   </div>
 </div>
@@ -49,6 +59,16 @@ exports[`snapshot testing 1`] = `
       1
     </span>
   </h3>
+  <span
+    className="status"
+  >
+    LOADING ...
+  </span>
   <div />
+  <div>
+    <input
+      className="guess"
+    />
+  </div>
 </div>
 `;
