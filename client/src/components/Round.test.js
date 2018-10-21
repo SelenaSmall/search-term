@@ -9,6 +9,8 @@ Enzyme.configure({ adapter: new Adapter() });
 import API from '../API'
 
 it('snapshot testing', () => {
+  API.fetchRoundData = () => Promise.resolve();
+
   const output = shallow(<Round />)
   expect(shallowToJson(output)).toMatchSnapshot()
 })
