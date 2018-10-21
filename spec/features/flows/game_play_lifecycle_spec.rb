@@ -11,9 +11,7 @@ feature 'Game play lifecycle', js: true do
 
     Then 'the game commences' do
       wait_for { focus_on(:game).round }.to eq('1')
-
-      pending 'There are no images!'
-      wait(0.5).for {focus_on(:game).images.count}.to eq(9)
+      wait_for { focus_on(:game).images.count }.to eq(9)
     end
 
     When 'the user submits an answer'
