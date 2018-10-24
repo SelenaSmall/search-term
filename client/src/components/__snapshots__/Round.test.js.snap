@@ -38,6 +38,7 @@ exports[`calls api to get all images on construction 1`] = `
   <div>
     <input
       className="guess"
+      onChange={[Function]}
     />
   </div>
 </div>
@@ -68,6 +69,7 @@ exports[`snapshot testing 1`] = `
   <div>
     <input
       className="guess"
+      onChange={[Function]}
     />
   </div>
 </div>

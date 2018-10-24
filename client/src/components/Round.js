@@ -5,8 +5,9 @@ import API from '../API'
 class Round extends Component {
   constructor(props) {
     super(props);
-    this.state = { round: 1, images: [], status: 'LOADING ...' }
+    this.state = { term: null, round: 1, images: [], status: 'LOADING ...' }
     this.fetchRoundData()
+    this.handleGuess = this.handleGuess.bind(this)
   }
 
   fetchRoundData() {
@@ -15,6 +16,12 @@ class Round extends Component {
       this.setState(data)
       this.setState({status: 'IN-PROGRESS'})
     })
+  }
+
+  handleGuess(event) {
+    if(event.target.value === this.state.term) {
+      this.setState({status: 'WINNER'})
+    }
   }
 
   render() {
@@ -27,7 +34,7 @@ class Round extends Component {
           { this.state.images.map( ({id, src}) => (<img className="image" key={id} src={src} alt="nice try"/>))}
         </div>
         <div>
-          <input className="guess"></input>
+          <input className="guess" onChange={this.handleGuess }></input>
         </div>
       </div>
     )

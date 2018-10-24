@@ -24,6 +24,7 @@ it('calls api to get all images on construction', () => {
         { src: 'image_1.jpg', id: 'abc-Xyz' },
         { src: 'image_1.jpg', id: 'abc-Xyz' }
       ],
+      term: 'search term'
     });
   API.fetchRoundData = (args) => {
     fetchRoundDataCalls.push(args);

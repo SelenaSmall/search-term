@@ -25,8 +25,7 @@ feature 'Game play lifecycle', js: true do
       end
 
       Then 'the user wins' do
-        pending
-        wait(0.5).for { focus_on(:game).status }.to eq('WINNER')
+        wait_for { focus_on(:game).status }.to eq('WINNER')
       end
     end
   end
