@@ -15,5 +15,9 @@ module PageFragments
     def status
       browser.find('.status').text
     end
+
+    def timer
+      browser.find('.timer').text
+    end
   end
 end

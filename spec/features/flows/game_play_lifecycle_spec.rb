@@ -17,6 +17,7 @@ feature 'Game play lifecycle', js: true do
       Then 'the game commences' do
         wait_for { focus_on(:game).round }.to eq('1')
         wait_for { focus_on(:game).status }.to eq('IN-PROGRESS')
+        wait_for { focus_on(:game).timer }.to match(/[0-9]/)
         wait_for { focus_on(:game).images.count }.to eq(9)
       end
 
