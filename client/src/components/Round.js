@@ -5,11 +5,19 @@ import API from '../API'
 class Round extends Component {
   constructor(props) {
     super(props);
-    this.state = { term: null, round: 1, images: [], status: 'LOADING ...', secondsRemaining: 10, score: null }
+    const round = parseInt(props.match.params.round)
+    this.state = { term: null, round: round, images: [], status: 'LOADING ...', secondsRemaining: 10, score: null }
     this.fetchRoundData()
     this.handleGuess = this.handleGuess.bind(this)
     this.startTimer = this.startTimer.bind(this)
     this.tick = this.tick.bind(this)
+  }
+
+  // TODO - shouldnt use this beacuse its unsafe
+  componentWillReceiveProps(props) {
+    const round = parseInt(props.match.params.round)
+    this.setState({round: round})
+    this.fetchRoundData()
   }
 
   fetchRoundData() {
@@ -26,9 +34,11 @@ class Round extends Component {
   }
 
   tick() {
-    this.setState({secondsRemaining: this.state.secondsRemaining - 1})
     if (this.state.secondsRemaining <= 0 ) {
       clearInterval(this.intervalHandle)
+      // TODO - new intervalHandle seems to be created for each round
+    } else {
+      this.setState({secondsRemaining: this.state.secondsRemaining - 1})
     }
   }
 
@@ -44,7 +54,7 @@ class Round extends Component {
     return(
       <div>
         <Link to="/">Start Game</Link>
-        <h3>Round <span className="round">1</span></h3>
+        <h3>Round <span className="round">{this.state.round}</span></h3>
         <span className="timer">{this.state.secondsRemaining}</span>
         <span className="score">{this.state.score}</span>
         <span className="status">{this.state.status}</span>
@@ -54,6 +64,7 @@ class Round extends Component {
         <div>
           <input className="guess" onChange={this.handleGuess }></input>
         </div>
+        <Link to={`/round/${this.state.round + 1}`} className="next-round">Next round</Link>
       </div>
     )
   }

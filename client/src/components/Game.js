@@ -22,7 +22,7 @@ const Game = () => (
 <h1>Welcome to the Game</h1>
 <p>
 
-<Link to="/round">Start Game</Link>
+<Link to="/round/1">Start Game</Link>
 
 </p>
 </Col>

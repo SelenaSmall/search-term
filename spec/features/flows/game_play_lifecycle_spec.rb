@@ -29,6 +29,26 @@ feature 'Game play lifecycle', js: true do
         wait_for { focus_on(:game).status }.to eq('WINNER')
         wait_for { focus_on(:game).score }.to match(/[0-9]/)
       end
+
+      When 'the user starts the next round' do
+        focus_on(:game).next_round
+      end
+
+      Then 'round two starts' do
+        wait_for { focus_on(:game).round }.to eq('2')
+        wait_for { focus_on(:game).status }.to eq('IN-PROGRESS')
+        wait_for { focus_on(:game).timer }.to match(/[0-9]/)
+        wait_for { focus_on(:game).images.count }.to eq(9)
+      end
+
+      When 'the user submits an answer' do
+        focus_on(:game).fill_guess('tequila')
+      end
+
+      Then 'the user wins' do
+        wait_for { focus_on(:game).status }.to eq('WINNER')
+        wait_for { focus_on(:game).score }.to match(/[0-9]/)
+      end
     end
   end
 end

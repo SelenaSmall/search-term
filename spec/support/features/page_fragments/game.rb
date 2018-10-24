@@ -23,5 +23,9 @@ module PageFragments
     def score
       browser.find('.score').text
     end
+
+    def next_round
+      browser.find('.next-round').click
+    end
   end
 end

@@ -6,6 +6,6 @@ import Round from './components/Round'
 export default () =>(
     <Switch>
         <Route exact path="/" component={Game} />
-        <Route exact path="/round" component={Round} />
+        <Route exact path="/round/:round" component={Round} />
     </Switch>
 )
