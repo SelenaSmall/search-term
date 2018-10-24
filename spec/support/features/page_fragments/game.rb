@@ -19,5 +19,9 @@ module PageFragments
     def timer
       browser.find('.timer').text
     end
+
+    def score
+      browser.find('.score').text
+    end
   end
 end

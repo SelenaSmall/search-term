@@ -5,7 +5,7 @@ import API from '../API'
 class Round extends Component {
   constructor(props) {
     super(props);
-    this.state = { term: null, round: 1, images: [], status: 'LOADING ...', secondsRemaining: 10 }
+    this.state = { term: null, round: 1, images: [], status: 'LOADING ...', secondsRemaining: 10, score: null }
     this.fetchRoundData()
     this.handleGuess = this.handleGuess.bind(this)
     this.startTimer = this.startTimer.bind(this)
@@ -36,6 +36,7 @@ class Round extends Component {
     if(event.target.value === this.state.term) {
       this.setState({status: 'WINNER'})
       clearInterval(this.intervalHandle)
+      this.setState({score: this.state.secondsRemaining})
     }
   }
 
@@ -45,6 +46,7 @@ class Round extends Component {
         <Link to="/">Start Game</Link>
         <h3>Round <span className="round">1</span></h3>
         <span className="timer">{this.state.secondsRemaining}</span>
+        <span className="score">{this.state.score}</span>
         <span className="status">{this.state.status}</span>
         <div>
           { this.state.images.map( ({id, src}) => (<img className="image" key={id} src={src} alt="nice try"/>))}

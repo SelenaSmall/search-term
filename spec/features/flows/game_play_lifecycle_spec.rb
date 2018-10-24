@@ -27,6 +27,7 @@ feature 'Game play lifecycle', js: true do
 
       Then 'the user wins' do
         wait_for { focus_on(:game).status }.to eq('WINNER')
+        wait_for { focus_on(:game).score }.to match(/[0-9]/)
       end
     end
   end
