@@ -6,17 +6,17 @@ class Round extends Component {
   constructor(props) {
     super(props);
     const round = parseInt(props.match.params.round)
-    this.state = { term: null, round: round, images: [], status: 'LOADING ...', secondsRemaining: 10, score: null }
+    this.state = { term: null, round: round, images: [], status: 'LOADING ...', secondsRemaining: 10, score: null, interval: null }
     this.fetchRoundData()
     this.handleGuess = this.handleGuess.bind(this)
     this.startTimer = this.startTimer.bind(this)
     this.tick = this.tick.bind(this)
   }
 
-  // TODO - shouldnt use this beacuse its unsafe
   componentWillReceiveProps(props) {
+    clearInterval(this.state.interval)
     const round = parseInt(props.match.params.round)
-    this.setState({round: round})
+    this.setState({round: round, secondsRemaining: 10})
     this.fetchRoundData()
   }
 
@@ -29,14 +29,18 @@ class Round extends Component {
     })
   }
 
+  componentWillUnmount() {
+    clearInterval(this.state.interval)
+  }
+
   startTimer() {
-    this.intervalHandle = setInterval(this.tick, 1000)
+    const interval = setInterval(this.tick, 1000);
+    this.setState({interval: interval })
   }
 
   tick() {
     if (this.state.secondsRemaining <= 0 ) {
-      clearInterval(this.intervalHandle)
-      // TODO - new intervalHandle seems to be created for each round
+      clearInterval(this.state.interval)
     } else {
       this.setState({secondsRemaining: this.state.secondsRemaining - 1})
     }
