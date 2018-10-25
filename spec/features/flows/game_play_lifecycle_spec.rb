@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'Game play lifecycle', js: true do
   context 'the game terms are configured' do
     before do
+      Game.create(rounds: 2)
       Term.create(phrase: 'tequila')
     end
 
@@ -52,9 +53,7 @@ feature 'Game play lifecycle', js: true do
 
       And 'Game is finished with a final score' do
         wait_for { focus_on(:results).congratulations }.to eq('Congratulations!')
-        wait_for { focus_on(:results).final_score }.to  match(/[0-9]/)
-        # play again link
-        # share your score on facebook
+        wait_for { focus_on(:results).final_score }.to match(/[0-9]/)
       end
     end
   end

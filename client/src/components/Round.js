@@ -8,6 +8,7 @@ class Round extends Component {
     const round = parseInt(props.match.params.round)
     this.state = { term: null, round: round, images: [], status: 'LOADING ...', secondsRemaining: 10, score: null, interval: null }
     this.fetchRoundData()
+    this.fetchGameData()
     this.handleGuess = this.handleGuess.bind(this)
     this.startTimer = this.startTimer.bind(this)
     this.tick = this.tick.bind(this)
@@ -26,6 +27,13 @@ class Round extends Component {
       this.setState(data)
       this.setState({status: 'IN-PROGRESS'})
       this.startTimer()
+    })
+  }
+
+  fetchGameData() {
+    API.fetchGameData().then((data) => {
+      console.log(data)
+      this.setState({maxRounds: data.rounds})
     })
   }
 
@@ -66,7 +74,7 @@ class Round extends Component {
           <input className="guess" onChange={this.handleGuess } value={this.state.guess}></input>
         </div>
         {
-          this.state.round >= 2 ?
+          this.state.round >= this.state.maxRounds ?
             <Link to={{ pathname: '/results', state: { score: this.state.score } }} className="next-round">Next</Link> :
             <Link to={`/round/${this.state.round + 1}`} className="next-round">Next</Link>
         }
