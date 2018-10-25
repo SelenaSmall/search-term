@@ -25,7 +25,7 @@ feature 'Game play lifecycle', js: true do
         focus_on(:game).fill_guess('tequila')
       end
 
-      Then 'the user wins' do
+      Then 'the user wins the round' do
         wait_for { focus_on(:game).status }.to eq('WINNER')
         wait_for { focus_on(:game).score }.to match(/[0-9]/)
       end
@@ -45,9 +45,16 @@ feature 'Game play lifecycle', js: true do
         focus_on(:game).fill_guess('tequila')
       end
 
-      Then 'the user wins' do
+      Then 'the user wins the round' do
         wait_for { focus_on(:game).status }.to eq('WINNER')
         wait_for { focus_on(:game).score }.to match(/[0-9]/)
+      end
+
+      And 'Game is finished with a final score' do
+        wait_for { focus_on(:results).congratulations }.to eq('Congratulations!')
+        # final score
+        # play again link
+        # share your score on facebook
       end
     end
   end

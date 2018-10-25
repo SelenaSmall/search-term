@@ -68,7 +68,11 @@ class Round extends Component {
         <div>
           <input className="guess" onChange={this.handleGuess }></input>
         </div>
-        <Link to={`/round/${this.state.round + 1}`} className="next-round">Next round</Link>
+        {
+          this.state.round >= 20 ?
+            <Link to="/results" className="next-round">Next</Link> :
+            <Link to={`/round/${this.state.round + 1}`} className="next-round">Next</Link>
+        }
       </div>
     )
   }
