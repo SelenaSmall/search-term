@@ -45,7 +45,7 @@ Capybara.register_driver :selenium_chrome do |app|
   )
 end
 Capybara.javascript_driver = :selenium_chrome
-Capybara.server_port = 3001
+Capybara.server_port = 4001
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
