@@ -52,7 +52,7 @@ feature 'Game play lifecycle', js: true do
 
       And 'Game is finished with a final score' do
         wait_for { focus_on(:results).congratulations }.to eq('Congratulations!')
-        # final score
+        wait_for { focus_on(:results).final_score }.to  match(/[0-9]/)
         # play again link
         # share your score on facebook
       end

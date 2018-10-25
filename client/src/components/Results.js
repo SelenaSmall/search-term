@@ -1,11 +1,14 @@
 import React from 'react'
+import {Link } from 'react-router-dom'
 
-
-
-const Game = () => (
-  <div className="congratulations">
-    Congratulations!
+const Results = ({location: { state: { score }} }) => (
+  <div>
+    <div className="congratulations">
+      Congratulations!
+    </div>
+    <div className="final-score">{score}</div>
+    <Link to='/'>home</Link>
   </div>
 )
 
-export default Game
+export default Results

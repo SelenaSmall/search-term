@@ -16,7 +16,7 @@ class Round extends Component {
   componentWillReceiveProps(props) {
     clearInterval(this.state.interval)
     const round = parseInt(props.match.params.round)
-    this.setState({round: round, secondsRemaining: 10})
+    this.setState({round: round, secondsRemaining: 10, guess: ''})
     this.fetchRoundData()
   }
 
@@ -27,10 +27,6 @@ class Round extends Component {
       this.setState({status: 'IN-PROGRESS'})
       this.startTimer()
     })
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.state.interval)
   }
 
   startTimer() {
@@ -47,10 +43,11 @@ class Round extends Component {
   }
 
   handleGuess(event) {
+    this.setState({guess: event.target.value})
     if(event.target.value === this.state.term) {
       this.setState({status: 'WINNER'})
-      clearInterval(this.intervalHandle)
-      this.setState({score: this.state.secondsRemaining})
+      clearInterval(this.state.interval)
+      this.setState({score: this.state.score + this.state.secondsRemaining})
     }
   }
 
@@ -60,17 +57,17 @@ class Round extends Component {
         <Link to="/">Start Game</Link>
         <h3>Round <span className="round">{this.state.round}</span></h3>
         <span className="timer">{this.state.secondsRemaining}</span>
-        <span className="score">{this.state.score}</span>
+        <span className="score">score: {this.state.score}</span>
         <span className="status">{this.state.status}</span>
         <div>
           { this.state.images.map( ({id, src}) => (<img className="image" key={id} src={src} alt="nice try"/>))}
         </div>
         <div>
-          <input className="guess" onChange={this.handleGuess }></input>
+          <input className="guess" onChange={this.handleGuess } value={this.state.guess}></input>
         </div>
         {
-          this.state.round >= 20 ?
-            <Link to="/results" className="next-round">Next</Link> :
+          this.state.round >= 2 ?
+            <Link to={{ pathname: '/results', state: { score: this.state.score } }} className="next-round">Next</Link> :
             <Link to={`/round/${this.state.round + 1}`} className="next-round">Next</Link>
         }
       </div>
