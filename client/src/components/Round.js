@@ -1,13 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  Card,
-  Jumbotron,
-  Row,
-  Col,
-  CardTitle,
-  Container
-} from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import API from '../API'
 import './game.css';
 
@@ -71,58 +64,72 @@ class Round extends Component {
   render() {
     return(
       <div>
-        <Jumbotron fluid className="text-center welcome-page">
-          <Container>
-            <h3 className="display-3">Round <span className="round">{this.state.round}</span></h3>
+        <section id="top-region">
+          <menu className="status-menu">
+            <ul>
+              <li className="status-menu-item status">
+                <span className="status-menu-item-label">Status</span>
+                <span className="status-menu-item-value">{this.state.status}</span>
+              </li>
+              <li className="status-menu-item score">
+                <span className="status-menu-item-label">Score</span>
+                <span className="status-menu-item-value">{this.state.score}</span>
+              </li>
+              <li className="status-menu-item timer">
+                <span className="status-menu-item-label">Time</span>
+                <span className="status-menu-item-value">{this.state.secondsRemaining}</span>
+              </li>
+            </ul>
+          </menu>
+        </section>
 
-            <Row className="status-row">
-              <Col xs="6" sm="4" className="status">
-                <Card body>
-                  <CardTitle>Status</CardTitle>
-                  {this.state.status}
-                </Card>
-              </Col>
-              <Col xs="6" sm="4" className="score">
-                <Card body>
-                  <CardTitle>Score</CardTitle>
-                  {this.state.score}
-                </Card>
-              </Col>
-              <Col xs="6" sm="4" className="timer">
-                <Card body>
-                  <CardTitle>Time</CardTitle>
-                  {this.state.secondsRemaining}
-                </Card>
-              </Col>
-            </Row>
+        <section id="middle-region">
+          <h1 className="text-center">Round <span className="round">{this.state.round}</span></h1>
 
-
-            <Row>
-              <Col xs="12">
-                <Card body>
-                  <CardTitle>
-                    Guess the search term
-                    <input className="guess-input" onChange={this.handleGuess } value={this.state.guess}></input>
-                  </CardTitle>
-
-                  <div className="images-container">
-                    { this.state.images.map( ({id, src}) => (
-                      <div className="single-image-container">
-                        <img className="image" key={id} src={src} alt="nice try"/>
-                      </div>
-                    ))}
+          <Row className="main-container-row">
+            <Col sm="6">
+              <div className="images-container">
+                { this.state.images.map( ({id, src}) => (
+                  <div className="images-container-single">
+                    <img className="images-container-single-image" key={id} src={src} alt="nice try"/>
                   </div>
+                ))}
+              </div>
+            </Col>
 
-                  {
-                    this.state.round >= this.state.maxRounds ?
-                      <Link to={{ pathname: '/results', state: { score: this.state.score } }} className="next-round game-button">Next</Link> :
-                      <Link to={`/round/${this.state.round + 1}`} className="next-round game-button">Next</Link>
-                  }
-                </Card>
-              </Col>
-            </Row>
-          </Container>
-        </Jumbotron>
+            <Col sm="6">
+              <div className="input-container">
+                <h5>Guess the search term</h5>
+                <textarea className="input-container-guess" onChange={this.handleGuess } value={this.state.guess}></textarea>
+
+                {
+                  this.state.round >= this.state.maxRounds ?
+                    <Link to={{ pathname: '/results', state: { score: this.state.score } }} className="input-container-next-round next-round game-button">Next</Link> :
+                    <Link to={`/round/${this.state.round + 1}`} className="input-container-next-round next-round game-button">Next</Link>
+                }
+              </div>
+            </Col>
+          </Row>
+        </section>
+
+        <section id="bottom-region">
+          <menu className="twitter-menu">
+            <ul>
+              <li className="twitter-menu-item twitter-menu-item-left status">
+                <a href="http://twitter.com/intent/user?screen_name=selenasmall88">
+                  <img className="twitter-menu-item-avatar" src="https://twitter.com/selenasmall88/profile_image?size=normal" alt="selena-small"></img>
+                  <span>@selenasmall88</span>
+                </a>
+              </li>
+              <li className="twitter-menu-item status">
+                <a href="http://twitter.com/intent/user?screen_name=saramic">
+                  <img className="twitter-menu-item-avatar" src="https://twitter.com/saramic/profile_image?size=normal" alt="michael-milewski"></img>
+                  <span>@saramic</span>
+                </a>
+              </li>
+            </ul>
+          </menu>
+        </section>
       </div>
     )
   }

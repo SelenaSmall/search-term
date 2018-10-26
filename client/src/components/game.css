@@ -17,9 +17,7 @@
     padding: 20px 50px;
 }
 
-.next-round {
-    padding: 0px 50px;
-}
+
 
 .game-button:hover {
     text-decoration: none;
@@ -27,32 +25,149 @@
     background: #0056b3;
 }
 
-.status-row {
-    margin-bottom: 20px;
+/*-- round.js --*/
+/*-- top region --*/
+#top-region {
+    overflow: hidden;
+}
+
+.status-menu {
+    margin: 0;
+    padding: 10px;
+    background: rgba(0,0,0,.8);
+    margin-bottom: 60px;
+}
+
+.status-menu ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.status-menu li {
+    flex-grow: 1;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: rgba(0,0,0,.8) 1px 1px 0;
+    margin: 0 10px;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    background: hsla(0,0%,100%,.2);
+    cursor: pointer;
+}
+
+.status-menu-item {
+    width: 30%;
+}
+
+.status-menu-item-value {
+    float: right;
+    color: #000;
+}
+
+/*-- middle region --*/
+#middle-region {
+    overflow: hidden;
+}
+
+.main-container-row {
+    background-color: #e9ecef;
+    padding: 10px;
+    height: 502px;
 }
 
 .images-container {
-    width: 462px;
-    height: 462px;
-    margin: 0px auto 10px;
+    width: 100%;
+    height: 100%;
+    margin: 10px 10px 10px auto;
+    display: flow-root;
 }
 
-.guess-input {
-    width: 462px;
-    display: block;
-    margin: auto;
-}
-
-.single-image-container {
-    float:left;
+.images-container-single {
+    float: left;
     position: relative;
-    margin:2px;
-    background-position:center center;
-    background-repeat:no-repeat;
-    background-size:cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 33.333333%;
+    padding: 2px;
 }
 
-.image {
-    width: 150px;
+.images-container-single-image {
+    width: 100%;
     height: 150px;
 }
+
+.input-container {
+    width: 100%;
+    margin: 10px auto;
+    display: flow-root;
+}
+
+.input-container-guess {
+    width: 100%;
+    display: block;
+    margin: auto;
+    height: 320px;
+}
+
+.input-container-next-round {
+    padding: 0px 50px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+/*-- bottom region --*/
+#bottom-region {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.twitter-menu {
+    margin: 0;
+    padding: 10px;
+}
+
+.twitter-menu ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.twitter-menu li {
+    flex-grow: 1;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: rgba(0,0,0,.8) 1px 1px 0;
+    margin: 0 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.twitter-menu-item {
+    width: 50%;
+}
+
+.twitter-menu-item-left {
+    text-align: right;
+}
+
+.twitter-menu-item span {
+    color: #fff;
+    padding-left: 10px;
+}
+
+.twitter-menu-item-avatar {
+    border-radius: 50px;
+    border: 1px solid #fff;
+}
+
