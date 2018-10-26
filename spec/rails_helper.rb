@@ -35,6 +35,13 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
+VCR.configure do |config|
+  config.cassette_library_dir = "#{Rails.root}/spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.ignore_localhost = true
+  config.allow_http_connections_when_no_cassette = true
+end
+
 # TODO can react be compiled into /public or run from in here by default?
 Capybara.app_host = "http://localhost:4010" # mimics Procfile.test for the moment
 

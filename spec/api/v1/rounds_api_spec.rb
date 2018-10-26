@@ -5,7 +5,9 @@ describe Api::V1::RoundsController, type: :controller do
     it 'should retrieve rounds data' do
       Term.create(phrase: 'tequila')
 
-      get(:show, params: { id: 1 }, format: :json)
+      VCR.use_cassette('google_image_search') do
+        get(:show, params: { id: 1 }, format: :json)
+      end
 
       expect(response.code).to eq '200'
 
