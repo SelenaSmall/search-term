@@ -51,6 +51,10 @@ feature 'Game play lifecycle', js: true do
         wait_for { focus_on(:game).score }.to match(/[0-9]/)
       end
 
+      When 'the user starts the next round' do
+        focus_on(:game).next_round
+      end
+
       And 'Game is finished with a final score' do
         wait_for { focus_on(:results).congratulations }.to eq('Congratulations!')
         wait_for { focus_on(:results).final_score }.to match(/[0-9]/)
