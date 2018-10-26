@@ -1,17 +1,17 @@
 import React from 'react'
-import { Card, Jumbotron } from 'reactstrap';
+import {
+  Jumbotron,
+} from 'reactstrap';
 import { Link } from 'react-router-dom'
 import './game.css';
 
 const Game = () => (
     <div>
       <Jumbotron className="text-center welcome-page">
-          <h1 className="display-3">Welcome to the Game</h1>
-          <p className="lead">With supporting text below as a natural lead-in to additional content.</p>
-
-          <Card body className="text-center welcome-card">
-            <Link to="/round/1" className="start-button">Start Game</Link>
-          </Card>
+        <h3 className="display-3">Welcome to the Game</h3>
+          <div className="start-game-container">
+            <Link to="/round/1" className="game-button">Start Game</Link>
+          </div>
       </Jumbotron>
     </div>
 )

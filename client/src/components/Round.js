@@ -1,12 +1,21 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import {
+  Card,
+  Jumbotron,
+  Row,
+  Col,
+  CardTitle,
+  Container
+} from 'reactstrap';
 import API from '../API'
+import './game.css';
 
 class Round extends Component {
   constructor(props) {
     super(props);
     const round = parseInt(props.match.params.round)
-    this.state = { term: null, round: round, images: [], status: 'LOADING ...', secondsRemaining: 10, score: null, interval: null }
+    this.state = { term: null, round: round, images: [], status: 'LOADING ...', secondsRemaining: 10, score: 0, interval: null }
     this.fetchRoundData()
     this.fetchGameData()
     this.handleGuess = this.handleGuess.bind(this)
@@ -62,22 +71,58 @@ class Round extends Component {
   render() {
     return(
       <div>
-        <Link to="/">Start Game</Link>
-        <h3>Round <span className="round">{this.state.round}</span></h3>
-        <span className="timer">{this.state.secondsRemaining}</span>
-        <span className="score">score: {this.state.score}</span>
-        <span className="status">{this.state.status}</span>
-        <div>
-          { this.state.images.map( ({id, src}) => (<img className="image" key={id} src={src} alt="nice try"/>))}
-        </div>
-        <div>
-          <input className="guess" onChange={this.handleGuess } value={this.state.guess}></input>
-        </div>
-        {
-          this.state.round >= this.state.maxRounds ?
-            <Link to={{ pathname: '/results', state: { score: this.state.score } }} className="next-round">Next</Link> :
-            <Link to={`/round/${this.state.round + 1}`} className="next-round">Next</Link>
-        }
+        <Jumbotron fluid className="text-center welcome-page">
+          <Container>
+            <h3 className="display-3">Round <span className="round">{this.state.round}</span></h3>
+
+            <Row className="status-row">
+              <Col xs="6" sm="4" className="status">
+                <Card body>
+                  <CardTitle>Status</CardTitle>
+                  {this.state.status}
+                </Card>
+              </Col>
+              <Col xs="6" sm="4" className="score">
+                <Card body>
+                  <CardTitle>Score</CardTitle>
+                  {this.state.score}
+                </Card>
+              </Col>
+              <Col xs="6" sm="4" className="timer">
+                <Card body>
+                  <CardTitle>Time</CardTitle>
+                  {this.state.secondsRemaining}
+                </Card>
+              </Col>
+            </Row>
+
+
+            <Row>
+              <Col xs="12">
+                <Card body>
+                  <CardTitle>
+                    Guess the search term
+                    <input className="guess-input" onChange={this.handleGuess } value={this.state.guess}></input>
+                  </CardTitle>
+
+                  <div className="images-container">
+                    { this.state.images.map( ({id, src}) => (
+                      <div className="single-image-container">
+                        <img className="image" key={id} src={src} alt="nice try"/>
+                      </div>
+                    ))}
+                  </div>
+
+                  {
+                    this.state.round >= this.state.maxRounds ?
+                      <Link to={{ pathname: '/results', state: { score: this.state.score } }} className="next-round game-button">Next</Link> :
+                      <Link to={`/round/${this.state.round + 1}`} className="next-round game-button">Next</Link>
+                  }
+                </Card>
+              </Col>
+            </Row>
+          </Container>
+        </Jumbotron>
       </div>
     )
   }

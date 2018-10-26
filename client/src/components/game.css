@@ -1,28 +1,58 @@
-.container {
-    height: 100vh;
-}
-
 .welcome-page {
     margin: 0px !important;
     height: 100vh;
 }
 
-.welcome-card {
-    height: 70%;
+.start-game-container {
+    padding: 100px;
 }
 
-.start-button {
-    width: 200px;
+.game-button {
     line-height: 50px;
     border: 1px solid grey;
     border-radius: 5px;
     background: rgba(13,130,223,0.95);
     color: #fff;
     margin: auto;
+    padding: 20px 50px;
 }
 
-.start-button:hover {
+.next-round {
+    padding: 0px 50px;
+}
+
+.game-button:hover {
     text-decoration: none;
     color: lightgrey;
     background: #0056b3;
+}
+
+.status-row {
+    margin-bottom: 20px;
+}
+
+.images-container {
+    width: 462px;
+    height: 462px;
+    margin: 0px auto 10px;
+}
+
+.guess-input {
+    width: 462px;
+    display: block;
+    margin: auto;
+}
+
+.single-image-container {
+    float:left;
+    position: relative;
+    margin:2px;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.image {
+    width: 150px;
+    height: 150px;
 }
