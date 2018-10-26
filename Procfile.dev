@@ -1,2 +1,2 @@
-web: cd client && REACT_APP_API_BASE_URL='http://localhost:3001' PORT=3000 npm start
-api: PORT=3001 && bundle exec rails s
+web: cd client && REACT_APP_API_BASE_URL='http://localhost:4001' PORT=4000 npm start
+api: PORT=4001 && bundle exec rails s

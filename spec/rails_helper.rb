@@ -36,7 +36,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 # TODO can react be compiled into /public or run from in here by default?
-Capybara.app_host = "http://localhost:4000" # mimics Procfile.test for the moment
+Capybara.app_host = "http://localhost:4010" # mimics Procfile.test for the moment
 
 Capybara.register_driver :selenium_chrome do |app|
   Capybara::Selenium::Driver.new(
@@ -45,7 +45,7 @@ Capybara.register_driver :selenium_chrome do |app|
   )
 end
 Capybara.javascript_driver = :selenium_chrome
-Capybara.server_port = 4001
+Capybara.server_port = 4011
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

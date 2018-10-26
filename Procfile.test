@@ -1,1 +1,1 @@
-web: cd client && REACT_APP_API_BASE_URL='http://localhost:4001' PORT=4000 npm start
+web: cd client && REACT_APP_API_BASE_URL='http://localhost:4011' PORT=4010 npm start
