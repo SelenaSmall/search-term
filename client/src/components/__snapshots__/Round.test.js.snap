@@ -2,75 +2,362 @@
 
 exports[`calls api to get all images on construction 1`] = `
 <div>
-  <Link
-    replace={false}
-    to="/"
+  <section
+    id="top-region"
   >
-    Start Game
-  </Link>
-  <h3>
-    Round 
-    <span
-      className="round"
+    <menu
+      className="status-menu"
     >
-      1
-    </span>
-  </h3>
-  <span
-    className="status"
+      <ul>
+        <li
+          className="status-menu-item status"
+        >
+          <span
+            className="status-menu-item-label"
+          >
+            Status
+          </span>
+          <span
+            className="status-menu-item-value"
+          >
+            IN-PROGRESS
+          </span>
+        </li>
+        <li
+          className="status-menu-item score"
+        >
+          <span
+            className="status-menu-item-label"
+          >
+            Score
+          </span>
+          <span
+            className="status-menu-item-value"
+          >
+            0
+          </span>
+        </li>
+        <li
+          className="status-menu-item timer"
+        >
+          <span
+            className="status-menu-item-label"
+          >
+            Time
+          </span>
+          <span
+            className="status-menu-item-value"
+          >
+            10
+          </span>
+        </li>
+      </ul>
+    </menu>
+  </section>
+  <section
+    id="middle-region"
   >
-    IN-PROGRESS
-  </span>
-  <div>
-    <img
-      alt="nice try"
-      className="image"
-      key="abc-Xyz"
-      src="image_1.jpg"
-    />
-    <img
-      alt="nice try"
-      className="image"
-      key="abc-Xyz"
-      src="image_1.jpg"
-    />
-  </div>
-  <div>
-    <input
-      className="guess"
-      onChange={[Function]}
-    />
-  </div>
+    <h1
+      className="text-center"
+    >
+      Round
+      <span
+        className="round"
+      >
+        1
+      </span>
+    </h1>
+    <Row
+      className="main-container-row"
+      tag="div"
+    >
+      <Col
+        sm="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        <div
+          className="images-container"
+        >
+          <div
+            className="images-container-single"
+          >
+            <img
+              alt="nice try"
+              className="images-container-single-image"
+              key="abc-Xyz"
+              src="image_1.jpg"
+            />
+          </div>
+          <div
+            className="images-container-single"
+          >
+            <img
+              alt="nice try"
+              className="images-container-single-image"
+              key="abc-Xyz"
+              src="image_1.jpg"
+            />
+          </div>
+        </div>
+      </Col>
+      <Col
+        sm="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        <div
+          className="input-container"
+        >
+          <h5>
+            Guess the search term
+          </h5>
+          <textarea
+            className="input-container-guess"
+            onChange={[Function]}
+          />
+          <Link
+            className="input-container-next-round next-round game-button"
+            replace={false}
+            to={
+              Object {
+                "pathname": "/results",
+                "state": Object {
+                  "score": 0,
+                },
+              }
+            }
+          >
+            Next
+          </Link>
+        </div>
+      </Col>
+    </Row>
+  </section>
+  <section
+    id="bottom-region"
+  >
+    <menu
+      className="twitter-menu"
+    >
+      <ul>
+        <li
+          className="twitter-menu-item twitter-menu-item-left status"
+        >
+          <a
+            href="http://twitter.com/intent/user?screen_name=selenasmall88"
+          >
+            <img
+              alt="selena-small"
+              className="twitter-menu-item-avatar"
+              src="https://twitter.com/selenasmall88/profile_image?size=normal"
+            />
+            <span>
+              @selenasmall88
+            </span>
+          </a>
+        </li>
+        <li
+          className="twitter-menu-item status"
+        >
+          <a
+            href="http://twitter.com/intent/user?screen_name=saramic"
+          >
+            <img
+              alt="michael-milewski"
+              className="twitter-menu-item-avatar"
+              src="https://twitter.com/saramic/profile_image?size=normal"
+            />
+            <span>
+              @saramic
+            </span>
+          </a>
+        </li>
+      </ul>
+    </menu>
+  </section>
 </div>
 `;
 
 exports[`snapshot testing 1`] = `
 <div>
-  <Link
-    replace={false}
-    to="/"
+  <section
+    id="top-region"
   >
-    Start Game
-  </Link>
-  <h3>
-    Round 
-    <span
-      className="round"
+    <menu
+      className="status-menu"
     >
-      1
-    </span>
-  </h3>
-  <span
-    className="status"
+      <ul>
+        <li
+          className="status-menu-item status"
+        >
+          <span
+            className="status-menu-item-label"
+          >
+            Status
+          </span>
+          <span
+            className="status-menu-item-value"
+          >
+            LOADING ...
+          </span>
+        </li>
+        <li
+          className="status-menu-item score"
+        >
+          <span
+            className="status-menu-item-label"
+          >
+            Score
+          </span>
+          <span
+            className="status-menu-item-value"
+          >
+            0
+          </span>
+        </li>
+        <li
+          className="status-menu-item timer"
+        >
+          <span
+            className="status-menu-item-label"
+          >
+            Time
+          </span>
+          <span
+            className="status-menu-item-value"
+          >
+            10
+          </span>
+        </li>
+      </ul>
+    </menu>
+  </section>
+  <section
+    id="middle-region"
   >
-    LOADING ...
-  </span>
-  <div />
-  <div>
-    <input
-      className="guess"
-      onChange={[Function]}
-    />
-  </div>
+    <h1
+      className="text-center"
+    >
+      Round
+      <span
+        className="round"
+      >
+        1
+      </span>
+    </h1>
+    <Row
+      className="main-container-row"
+      tag="div"
+    >
+      <Col
+        sm="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        <div
+          className="images-container"
+        />
+      </Col>
+      <Col
+        sm="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        <div
+          className="input-container"
+        >
+          <h5>
+            Guess the search term
+          </h5>
+          <textarea
+            className="input-container-guess"
+            onChange={[Function]}
+          />
+          <Link
+            className="input-container-next-round next-round game-button"
+            replace={false}
+            to="/round/2"
+          >
+            Next
+          </Link>
+        </div>
+      </Col>
+    </Row>
+  </section>
+  <section
+    id="bottom-region"
+  >
+    <menu
+      className="twitter-menu"
+    >
+      <ul>
+        <li
+          className="twitter-menu-item twitter-menu-item-left status"
+        >
+          <a
+            href="http://twitter.com/intent/user?screen_name=selenasmall88"
+          >
+            <img
+              alt="selena-small"
+              className="twitter-menu-item-avatar"
+              src="https://twitter.com/selenasmall88/profile_image?size=normal"
+            />
+            <span>
+              @selenasmall88
+            </span>
+          </a>
+        </li>
+        <li
+          className="twitter-menu-item status"
+        >
+          <a
+            href="http://twitter.com/intent/user?screen_name=saramic"
+          >
+            <img
+              alt="michael-milewski"
+              className="twitter-menu-item-avatar"
+              src="https://twitter.com/saramic/profile_image?size=normal"
+            />
+            <span>
+              @saramic
+            </span>
+          </a>
+        </li>
+      </ul>
+    </menu>
+  </section>
 </div>
 `;

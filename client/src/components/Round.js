@@ -34,7 +34,6 @@ class Round extends Component {
 
   fetchGameData() {
     API.fetchGameData().then((data) => {
-      console.log(data)
       this.setState({maxRounds: data.rounds})
     })
   }

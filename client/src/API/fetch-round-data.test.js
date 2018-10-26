@@ -11,7 +11,7 @@ it('should request data from the backend for a given round', () => {
 
   fetchRoundData(123);
 
-  expect(axiosGets).toEqual(['http://example.com/api/v1/rounds/123']);
+  expect(axiosGets).toEqual(['/api/v1/rounds/123']);
 })
 
 it('should return data from response', async () => {

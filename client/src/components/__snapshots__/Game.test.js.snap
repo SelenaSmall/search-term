@@ -2,52 +2,113 @@
 
 exports[`snapshot testing 1`] = `
 <div>
-  <Navbar
-    color="inverse"
-    expand="md"
-    light={true}
-    tag="nav"
+  <section
+    id="top-region"
   >
-    <NavbarBrand
-      href="/"
-      tag="a"
-    />
-  </Navbar>
-  <Jumbotron
-    tag="div"
-  >
-    <Container
-      tag="div"
+    <menu
+      className="status-menu"
     >
-      <Row
-        tag="div"
-      >
-        <Col
-          tag="div"
-          widths={
-            Array [
-              "xs",
-              "sm",
-              "md",
-              "lg",
-              "xl",
-            ]
-          }
+      <ul>
+        <li
+          className="status-menu-item status"
         >
-          <h1>
-            Welcome to the Game
-          </h1>
-          <p>
-            <Link
-              replace={false}
-              to="/round"
-            >
-              Start Game
-            </Link>
-          </p>
-        </Col>
-      </Row>
-    </Container>
-  </Jumbotron>
+          <span
+            className="status-menu-item-label"
+          >
+            Status
+          </span>
+          <span
+            className="status-menu-item-value"
+          />
+        </li>
+        <li
+          className="status-menu-item score"
+        >
+          <span
+            className="status-menu-item-label"
+          >
+            Score
+          </span>
+          <span
+            className="status-menu-item-value"
+          />
+        </li>
+        <li
+          className="status-menu-item timer"
+        >
+          <span
+            className="status-menu-item-label"
+          >
+            Time
+          </span>
+          <span
+            className="status-menu-item-value"
+          />
+        </li>
+      </ul>
+    </menu>
+  </section>
+  <section
+    id="middle-region"
+  >
+    <div
+      className="game-main-container text-center"
+    >
+      <div>
+        <h1>
+          Welcome to the Game
+        </h1>
+        <Link
+          className="game-button start-game-button"
+          replace={false}
+          to="/round/1"
+        >
+          Start Game
+        </Link>
+      </div>
+    </div>
+  </section>
+  <section
+    id="bottom-region"
+  >
+    <menu
+      className="twitter-menu"
+    >
+      <ul>
+        <li
+          className="twitter-menu-item twitter-menu-item-left status"
+        >
+          <a
+            href="http://twitter.com/intent/user?screen_name=selenasmall88"
+          >
+            <img
+              alt="selena-small"
+              className="twitter-menu-item-avatar"
+              src="https://twitter.com/selenasmall88/profile_image?size=normal"
+            />
+            <span>
+              @selenasmall88
+            </span>
+          </a>
+        </li>
+        <li
+          className="twitter-menu-item status"
+        >
+          <a
+            href="http://twitter.com/intent/user?screen_name=saramic"
+          >
+            <img
+              alt="michael-milewski"
+              className="twitter-menu-item-avatar"
+              src="https://twitter.com/saramic/profile_image?size=normal"
+            />
+            <span>
+              @saramic
+            </span>
+          </a>
+        </li>
+      </ul>
+    </menu>
+  </section>
 </div>
 `;

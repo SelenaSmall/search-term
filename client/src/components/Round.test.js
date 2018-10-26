@@ -10,8 +10,9 @@ import API from '../API'
 
 it('snapshot testing', () => {
   API.fetchRoundData = () => Promise.resolve();
+  API.fetchGameData = () => Promise.resolve({rounds: 1});
 
-  const output = shallow(<Round />)
+  const output = shallow(<Round match={{params: {round: 1}}} />)
   expect(shallowToJson(output)).toMatchSnapshot()
 })
 
@@ -30,8 +31,9 @@ it('calls api to get all images on construction', () => {
     fetchRoundDataCalls.push(args);
     return roundDataPromise
   };
+  API.fetchGameData = () => Promise.resolve({rounds: 1});
 
-  const output = shallow(<Round />);
+  const output = shallow(<Round match={{params: {round: 1}}} />);
   roundDataPromise.then(() => {
     expect(shallowToJson(output)).toMatchSnapshot();
   })
