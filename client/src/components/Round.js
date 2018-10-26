@@ -7,7 +7,7 @@ import './game.css';
 class Round extends Component {
   constructor(props) {
     super(props);
-    const round = parseInt(props.match.params.round)
+    const round = parseInt(props.match.params.round, 10)
     this.state = { term: null, round: round, images: [], status: 'LOADING ...', secondsRemaining: 10, score: 0, interval: null }
     this.fetchRoundData()
     this.fetchGameData()
@@ -18,7 +18,7 @@ class Round extends Component {
 
   componentWillReceiveProps(props) {
     clearInterval(this.state.interval)
-    const round = parseInt(props.match.params.round)
+    const round = parseInt(props.match.params.round, 10)
     this.setState({round: round, secondsRemaining: 10, guess: ''})
     this.fetchRoundData()
   }
