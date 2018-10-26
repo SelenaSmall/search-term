@@ -1,35 +1,19 @@
 import React from 'react'
-import {
-    Navbar,
-    NavbarBrand,
-    Container,
-    Row,
-    Col,
-    Jumbotron,
-} from 'reactstrap';
+import { Card, Jumbotron } from 'reactstrap';
 import { Link } from 'react-router-dom'
-
+import './game.css';
 
 const Game = () => (
     <div>
-<Navbar color="inverse" light expand="md">
-    <NavbarBrand href="/"></NavbarBrand>
-</Navbar>
-<Jumbotron>
-<Container>
-<Row>
-<Col>
-<h1>Welcome to the Game</h1>
-<p>
+      <Jumbotron className="text-center welcome-page">
+          <h1 className="display-3">Welcome to the Game</h1>
+          <p className="lead">With supporting text below as a natural lead-in to additional content.</p>
 
-<Link to="/round/1">Start Game</Link>
-
-</p>
-</Col>
-</Row>
-</Container>
-</Jumbotron>
-</div>
+          <Card body className="text-center welcome-card">
+            <Link to="/round/1" className="start-button">Start Game</Link>
+          </Card>
+      </Jumbotron>
+    </div>
 )
 
 export default Game

@@ -1,0 +1,28 @@
+.container {
+    height: 100vh;
+}
+
+.welcome-page {
+    margin: 0px !important;
+    height: 100vh;
+}
+
+.welcome-card {
+    height: 70%;
+}
+
+.start-button {
+    width: 200px;
+    line-height: 50px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background: rgba(13,130,223,0.95);
+    color: #fff;
+    margin: auto;
+}
+
+.start-button:hover {
+    text-decoration: none;
+    color: lightgrey;
+    background: #0056b3;
+}
