@@ -5,7 +5,7 @@ RSpec.describe Api::V1::RoundsController, type: :controller do
     image_service = double('image service')
     image_urls = ['image url', 'image url 2']
 
-    expect(Term).to receive(:first).and_return(double('term', phrase: 'the phrase'))
+    expect(Term).to receive(:get_term).with('whatever').and_return(double('term', phrase: 'the phrase'))
     expect(ImageSearchService).to receive(:new).with(search_term: 'the phrase').and_return(image_service)
     expect(image_service).to receive(:call).and_return(image_urls)
     expect(image_urls).to receive(:shuffle).and_return(image_urls)

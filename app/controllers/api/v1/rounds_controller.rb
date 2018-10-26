@@ -1,6 +1,6 @@
 class Api::V1::RoundsController < ApplicationController
   def show
-    term = Term.first
+    term = Term.get_term(params[:id])
     images = ImageSearchService
                  .new(search_term: term.phrase)
                  .call
