@@ -5,15 +5,15 @@ module PageFragments
     end
 
     def images
-      browser.find_all('.image')
+      browser.find_all('.images-container-single-image')
     end
 
     def fill_guess(guess)
-      browser.find('.guess').fill_in(with: guess)
+      browser.find('.input-container-guess').fill_in(with: guess)
     end
 
     def status
-      browser.find('.status').text
+      browser.find('.status .status-menu-item-value').text
     end
 
     def timer

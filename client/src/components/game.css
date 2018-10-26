@@ -1,10 +1,22 @@
-.welcome-page {
-    margin: 0px !important;
-    height: 100vh;
+/*-- game.js --*/
+.game-main-container {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate3d(-50%,0,0);
+    transform: translate3d(-50%,0,0);
+    display: table;
+    width: 800px;
+    height: 600px;
+    background: transparent 0 0 no-repeat;
 }
 
-.start-game-container {
-    padding: 100px;
+.game-main-container h1 {
+    margin-bottom: 40px;
+}
+
+.game-main-container div {
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .game-button {
@@ -14,10 +26,8 @@
     background: rgba(13,130,223,0.95);
     color: #fff;
     margin: auto;
-    padding: 20px 50px;
+    padding: 10px 50px;
 }
-
-
 
 .game-button:hover {
     text-decoration: none;
@@ -25,7 +35,11 @@
     background: #0056b3;
 }
 
-/*-- round.js --*/
+.start-game-button {
+    padding: 30px 100px;
+    font-size: 20px;
+}
+
 /*-- top region --*/
 #top-region {
     overflow: hidden;
@@ -34,7 +48,7 @@
 .status-menu {
     margin: 0;
     padding: 10px;
-    background: rgba(0,0,0,.8);
+    background: rgba(0,0,0,.6);
     margin-bottom: 60px;
 }
 
@@ -170,4 +184,3 @@
     border-radius: 50px;
     border: 1px solid #fff;
 }
-
