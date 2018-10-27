@@ -39,3 +39,13 @@ it('calls api to get all images on construction', () => {
   })
   expect(fetchRoundDataCalls).toEqual([1]);
 });
+
+it.skip('sets state to winner if guess is correct', () => {
+  API.fetchGameData = () => Promise.resolve({rounds: 1});
+  API.fetchRoundData = (args) => Promise.resolve({ term: 'ghost' })
+
+  const output = shallow(<Round match={{params: {round: 1}}} />);
+  expect(output.find('.status .status-menu-item-value').text()).toEqual('IN-PROGRESS');
+  output.find('textarea.input-container-guess').simulate('change', { target: { value: 'ghost' } });
+  expect(output.find('.status .status-menu-item-value').text()).toEqual('WINNER');
+})
