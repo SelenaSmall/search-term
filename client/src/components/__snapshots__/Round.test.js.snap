@@ -89,6 +89,7 @@ exports[`calls api to get all images on construction 1`] = `
         >
           <div
             className="images-container-single"
+            key="abc-Xyz"
           >
             <img
               alt="nice try"
@@ -99,6 +100,7 @@ exports[`calls api to get all images on construction 1`] = `
           </div>
           <div
             className="images-container-single"
+            key="abc-Xyz"
           >
             <img
               alt="nice try"

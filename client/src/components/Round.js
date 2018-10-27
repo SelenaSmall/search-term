@@ -89,7 +89,7 @@ class Round extends Component {
             <Col sm="6">
               <div className="images-container">
                 { this.state.images.map( ({id, src}) => (
-                  <div className="images-container-single">
+                  <div className="images-container-single" key={id}>
                     <img className="images-container-single-image" key={id} src={src} alt="nice try"/>
                   </div>
                 ))}
