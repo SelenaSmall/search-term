@@ -132,6 +132,7 @@ exports[`calls api to get all images on construction 1`] = `
           </h5>
           <textarea
             className="input-container-guess"
+            disabled={false}
             onChange={[Function]}
           />
           <Link
@@ -306,6 +307,7 @@ exports[`snapshot testing 1`] = `
           </h5>
           <textarea
             className="input-container-guess"
+            disabled={false}
             onChange={[Function]}
           />
           <Link

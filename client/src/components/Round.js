@@ -53,7 +53,7 @@ class Round extends Component {
 
   handleGuess(event) {
     this.setState({guess: event.target.value})
-    if(event.target.value === this.state.term) {
+    if(event.target.value.split(/[\s\n]/).find((word) => (word === this.state.term))) {
       this.setState({status: 'WINNER'})
       clearInterval(this.state.interval)
       this.setState({score: this.state.score + this.state.secondsRemaining})
@@ -99,7 +99,11 @@ class Round extends Component {
             <Col sm="6">
               <div className="input-container">
                 <h5>Guess the search term</h5>
-                <textarea className="input-container-guess" onChange={this.handleGuess } value={this.state.guess}></textarea>
+                <textarea
+                  className="input-container-guess"
+                  onChange={this.handleGuess }
+                  value={this.state.guess}
+                  disabled={this.state.status === 'WINNER'}></textarea>
 
                 {
                   this.state.round >= this.state.maxRounds ?

@@ -42,8 +42,8 @@ feature 'Game play lifecycle', js: true do
         wait_for { focus_on(:game).images.count }.to eq(9)
       end
 
-      When 'the user submits an answer' do
-        focus_on(:game).fill_guess('tequila')
+      When 'the user submits a number of answers including the right one' do
+        focus_on(:game).fill_guess("bottle alcohol\n tequila")
       end
 
       Then 'the user wins the round' do
