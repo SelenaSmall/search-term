@@ -24,6 +24,7 @@ class Round extends Component {
   }
 
   fetchRoundData() {
+    this.setState({status: 'LOADING ...', images: []})
     const { round } = this.state;
     API.fetchRoundData(round).then((data) => {
       this.setState(data)
@@ -87,11 +88,13 @@ class Round extends Component {
 
           <Row className="main-container-row">
             <Col sm="6">
-              <div className="images-container">
-                { this.state.images.map( ({id, src}) => (
-                  <div className="images-container-single" key={id}>
-                    <img className="images-container-single-image" key={id} src={src} alt="nice try"/>
-                  </div>
+                <div className="images-container">
+                  { this.state.status === 'LOADING ...' ?
+                    <div className="background" /> :
+                    this.state.images.map( ({id, src}) => (
+                    <div className="images-container-single" key={id}>
+                      <img className="images-container-single-image" key={id} src={src} alt="nice try"/>
+                    </div>
                 ))}
               </div>
             </Col>
