@@ -123,13 +123,13 @@ class Round extends Component {
             <ul>
               <li className="twitter-menu-item twitter-menu-item-left status">
                 <a href="http://twitter.com/intent/user?screen_name=selenasmall88">
-                  <img className="twitter-menu-item-avatar" src="https://twitter.com/selenasmall88/profile_image?size=normal" alt="selena-small"></img>
+                  <img className="twitter-menu-item-avatar" src="/avatar-selena.jpg" alt="selena-small"></img>
                   <span>@selenasmall88</span>
                 </a>
               </li>
               <li className="twitter-menu-item status">
                 <a href="http://twitter.com/intent/user?screen_name=saramic">
-                  <img className="twitter-menu-item-avatar" src="https://twitter.com/saramic/profile_image?size=normal" alt="michael-milewski"></img>
+                  <img className="twitter-menu-item-avatar" src="/avatar-michael.jpg" alt="michael-milewski"></img>
                   <span>@saramic</span>
                 </a>
               </li>
