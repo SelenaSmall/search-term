@@ -30,6 +30,7 @@ class Round extends Component {
       this.setState(data)
       this.setState({status: 'IN-PROGRESS'})
       this.startTimer()
+      this.guessInput.focus();
     })
   }
 
@@ -54,11 +55,17 @@ class Round extends Component {
 
   handleGuess(event) {
     this.setState({guess: event.target.value})
-    if(event.target.value.split(/[\s\n]/).find((word) => (word === this.state.term))) {
+    const REGEX = new RegExp(this.state.term)
+    if(REGEX.exec(event.target.value)) {
       this.setState({status: 'WINNER'})
       clearInterval(this.state.interval)
       this.setState({score: this.state.score + this.state.secondsRemaining})
+      this.nextButton.focus()
     }
+  }
+
+  componentDidMount() {
+    this.guessInput.focus();
   }
 
   render() {
@@ -103,6 +110,7 @@ class Round extends Component {
               <div className="input-container">
                 <h5>Guess the search term</h5>
                 <textarea
+                  ref={(input) => { this.guessInput = input; }}
                   className="input-container-guess"
                   onChange={this.handleGuess }
                   value={this.state.guess}
@@ -110,8 +118,8 @@ class Round extends Component {
 
                 {
                   this.state.round >= this.state.maxRounds ?
-                    <Link to={{ pathname: '/results', state: { score: this.state.score } }} className="input-container-next-round next-round game-button">Next</Link> :
-                    <Link to={`/round/${this.state.round + 1}`} className="input-container-next-round next-round game-button">Next</Link>
+                    <Link innerRef={(input) => { this.nextButton = input; }} to={{ pathname: '/results', state: { score: this.state.score } }} className="input-container-next-round next-round game-button">Next</Link> :
+                    <Link innerRef={(input) => { this.nextButton = input; }} to={`/round/${this.state.round + 1}`} className="input-container-next-round next-round game-button">Next</Link>
                 }
               </div>
             </Col>
