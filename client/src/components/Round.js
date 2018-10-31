@@ -9,7 +9,7 @@ class Round extends Component {
     super(props);
     const round = parseInt(props.match.params.round, 10)
     this.state = { term: null, round: round, images: [], status: 'LOADING ...', secondsRemaining: 10, score: 0, interval: null }
-    this.fetchRoundData()
+    this.fetchRoundData(round)
     this.fetchGameData()
     this.handleGuess = this.handleGuess.bind(this)
     this.startTimer = this.startTimer.bind(this)
@@ -20,12 +20,11 @@ class Round extends Component {
     clearInterval(this.state.interval)
     const round = parseInt(props.match.params.round, 10)
     this.setState({round: round, secondsRemaining: 10, guess: ''})
-    this.fetchRoundData()
+    this.fetchRoundData(round)
   }
 
-  fetchRoundData() {
+  fetchRoundData(round) {
     this.setState({status: 'LOADING ...', images: []})
-    const { round } = this.state;
     API.fetchRoundData(round).then((data) => {
       this.setState(data)
       this.setState({status: 'IN-PROGRESS'})
