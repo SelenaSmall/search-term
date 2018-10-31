@@ -32,7 +32,7 @@ const Game = () => (
         </div>
       </section>
 
-      <section id="bottom-region">
+      <section id="bottom-region" className="md:fixed">
         <menu className="twitter-menu">
           <ul>
             <li className="twitter-menu-item twitter-menu-item-left status">

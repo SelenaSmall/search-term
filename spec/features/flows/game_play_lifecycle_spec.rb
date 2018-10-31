@@ -4,7 +4,8 @@ feature 'Game play lifecycle', js: true do
   context 'the game terms are configured' do
     before do
       Game.create(rounds: 2)
-      Term.create(phrase: 'tequila')
+      Term.create(phrase: 'ghost')
+      Term.create(phrase: 'haunted house')
     end
 
     scenario 'WINNING a game' do
@@ -23,7 +24,7 @@ feature 'Game play lifecycle', js: true do
       end
 
       When 'the user submits an answer' do
-        focus_on(:game).fill_guess('tequila')
+        focus_on(:game).fill_guess('ghost')
       end
 
       Then 'the user wins the round' do
@@ -42,8 +43,16 @@ feature 'Game play lifecycle', js: true do
         wait_for { focus_on(:game).images.count }.to eq(9)
       end
 
-      When 'the user submits a number of answers including the right one' do
-        focus_on(:game).fill_guess("bottle alcohol\n tequila")
+      When 'the user submits wrong guess' do
+        focus_on(:game).fill_guess("haunted\n")
+      end
+
+      Then 'the status stays as in progress' do
+        wait_for { focus_on(:status).status }.to eq('IN-PROGRESS')
+      end
+
+      When 'the user keeps typing and guesses correctly' do
+        focus_on(:game).have_another_guess("haunted house")
       end
 
       Then 'the user wins the round' do
@@ -55,7 +64,7 @@ feature 'Game play lifecycle', js: true do
         focus_on(:game).next_round
       end
 
-      And 'Game is finished with a final score' do
+      Then 'Game is finished with a final score' do
         wait_for { focus_on(:results).congratulations }.to eq('Congratulations!')
         wait_for { focus_on(:results).final_score }.to match(/[0-9]/)
       end
