@@ -13,6 +13,7 @@ feature 'Game play lifecycle', js: true do
         visit('/')
         wait_for { focus_on(:welcome).text }.to eq('Welcome to the Game')
 
+        binding.pry
         focus_on(:welcome).start_game
       end
 
@@ -24,6 +25,7 @@ feature 'Game play lifecycle', js: true do
       end
 
       When 'the user submits an answer' do
+        binding.pry
         focus_on(:game).fill_guess('ghost')
       end
 
@@ -33,6 +35,7 @@ feature 'Game play lifecycle', js: true do
       end
 
       When 'the user starts the next round' do
+        binding.pry
         focus_on(:game).next_round
       end
 
@@ -44,6 +47,7 @@ feature 'Game play lifecycle', js: true do
       end
 
       When 'the user submits wrong guess' do
+        binding.pry
         focus_on(:game).fill_guess("haunted\n")
       end
 
@@ -52,6 +56,7 @@ feature 'Game play lifecycle', js: true do
       end
 
       When 'the user keeps typing and guesses correctly' do
+        binding.pry
         focus_on(:game).have_another_guess("haunted house")
       end
 
@@ -61,11 +66,13 @@ feature 'Game play lifecycle', js: true do
       end
 
       When 'the user starts the next round' do
+        binding.pry
         focus_on(:game).next_round
       end
 
       Then 'Game is finished with a final score' do
         wait_for { focus_on(:results).congratulations }.to eq('Congratulations!')
+        binding.pry
         wait_for { focus_on(:results).final_score }.to match(/[0-9]/)
       end
     end
