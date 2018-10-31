@@ -70,7 +70,7 @@ class Round extends Component {
 
   render() {
     return(
-      <div>
+      <div className="flex flex-column">
         <section id="top-region">
           <menu className="status-menu">
             <ul>
@@ -126,7 +126,7 @@ class Round extends Component {
           </Row>
         </section>
 
-        <section id="bottom-region">
+        <section id="bottom-region" className="md:fixed">
           <menu className="twitter-menu">
             <ul>
               <li className="twitter-menu-item twitter-menu-item-left status">

@@ -84,13 +84,11 @@
 
 /*-- middle region --*/
 #middle-region {
-    overflow: hidden;
 }
 
 .main-container-row {
     background-color: #e9ecef;
     padding: 10px;
-    height: 502px;
 }
 
 .images-container {
@@ -149,19 +147,18 @@
     width: 100%;
     display: block;
     margin: auto;
-    height: 320px;
+    font-size: 2rem;
+    height: 240px;
 }
 
 .input-container-next-round {
-    padding: 0px 50px;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 10px 50px;
 }
 
 /*-- bottom region --*/
 #bottom-region {
-    position: fixed;
     bottom: 0;
     right: 0;
     left: 0;
