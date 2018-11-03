@@ -69,6 +69,7 @@ exports[`snapshot testing 1`] = `
     </div>
   </section>
   <section
+    className="md:fixed"
     id="bottom-region"
   >
     <menu
@@ -84,7 +85,7 @@ exports[`snapshot testing 1`] = `
             <img
               alt="selena-small"
               className="twitter-menu-item-avatar"
-              src="https://twitter.com/selenasmall88/profile_image?size=normal"
+              src="/avatar-selena.jpg"
             />
             <span>
               @selenasmall88
@@ -100,7 +101,7 @@ exports[`snapshot testing 1`] = `
             <img
               alt="michael-milewski"
               className="twitter-menu-item-avatar"
-              src="https://twitter.com/saramic/profile_image?size=normal"
+              src="/avatar-michael.jpg"
             />
             <span>
               @saramic
