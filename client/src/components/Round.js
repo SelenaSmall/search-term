@@ -30,6 +30,8 @@ class Round extends Component {
       this.setState({status: 'IN-PROGRESS'})
       this.startTimer()
       // this.guessInput.focus(); // TODO breaks tests
+    }).catch((error) => {
+      this.setState({status: 'ERROR'})
     })
   }
 

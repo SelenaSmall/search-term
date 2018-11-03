@@ -40,6 +40,27 @@ it('calls api to get all images on construction', () => {
   expect(fetchRoundDataCalls).toEqual([1]);
 });
 
+it('calls api and handles an error', () => {
+  const fetchRoundDataCalls = [];
+
+  const expectedError = new Error('Fail');
+  const roundDataPromise = Promise.reject(expectedError)
+
+  API.fetchRoundData = (args) => {
+    fetchRoundDataCalls.push(args);
+    return roundDataPromise
+  }
+  API.fetchGameData = () => Promise.resolve({rounds: 1});
+
+  const output = shallow(<Round match={{params: {round: 1}}} />);
+  expect(output.find('.status .status-menu-item-value').text()).toEqual('LOADING ...');
+  roundDataPromise.then(() => {
+  }).catch(() => {
+    expect(fetchRoundDataCalls).toEqual([1]);
+    expect(output.find('.status .status-menu-item-value').text()).toEqual('ERROR');
+  })
+});
+
 it.skip('sets state to winner if guess is correct', () => {
   API.fetchGameData = () => Promise.resolve({rounds: 1});
   API.fetchRoundData = (args) => Promise.resolve({ term: 'ghost' })

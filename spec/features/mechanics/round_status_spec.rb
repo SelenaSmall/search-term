@@ -27,4 +27,17 @@ feature 'Round Status', js: true do
       end
     end
   end
+
+  context 'The database does not have the minimum setup' do
+    scenario 'Casper tries to start a round and is informed there is an error' do
+      When 'user on a round and the round loads' do
+        visit('/round/1')
+      end
+
+      Then 'status is loading' do
+        wait_for { focus_on(:status).status }.to eq('ERROR')
+      end
+    end
+  end
+
 end
