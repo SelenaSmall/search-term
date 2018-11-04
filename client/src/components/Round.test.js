@@ -46,6 +46,8 @@ it('calls api to get all images on construction', () => {
 //   TypeError: Cannot read property 'focus' of null
 //   console.log(this.guessInputRef)
 //   { current: null }
+//
+// https://blog.logrocket.com/how-to-use-react-createref-ea014ad09dba
 it.skip('focuses on the guess box by default', () => {
   API.fetchRoundData = (args) => Promise.resolve({});
   API.fetchGameData = () => Promise.resolve({rounds: 1});
