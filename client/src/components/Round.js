@@ -11,6 +11,8 @@ class Round extends Component {
     this.state = { term: null, round: round, images: [], status: 'LOADING ...', secondsRemaining: 60, score: 0, interval: null }
     this.fetchRoundData(round)
     this.fetchGameData()
+    this.guessInputRef = React.createRef()
+    this.nextButtonRef = React.createRef()
     this.handleGuess = this.handleGuess.bind(this)
     this.startTimer = this.startTimer.bind(this)
     this.tick = this.tick.bind(this)
@@ -29,7 +31,7 @@ class Round extends Component {
       this.setState(data)
       this.setState({status: 'IN-PROGRESS'})
       this.startTimer()
-      // this.guessInput.focus(); // TODO breaks tests
+      this.guessInputRef.current.focus()
     }).catch((error) => {
       this.setState({status: 'ERROR'})
     })
@@ -61,12 +63,12 @@ class Round extends Component {
       this.setState({status: 'WINNER'})
       clearInterval(this.state.interval)
       this.setState({score: this.state.score + this.state.secondsRemaining})
-      this.nextButton.focus()
+      this.nextButtonRef.current.focus()
     }
   }
 
   componentDidMount() {
-    // this.guessInput.focus(); // TODO breaks tests
+    // this.guessInputRef.current.focus(); // TODO breaks tests
   }
 
   render() {
@@ -110,8 +112,8 @@ class Round extends Component {
             <Col sm="6">
               <div className="input-container">
                 <h5>Guess the search term</h5>
-                <textarea
-                  ref={(input) => { this.guessInput = input; }}
+                 <textarea
+                  ref={this.guessInputRef}
                   className="input-container-guess"
                   onChange={this.handleGuess }
                   value={this.state.guess}
@@ -119,8 +121,8 @@ class Round extends Component {
 
                 {
                   this.state.round >= this.state.maxRounds ?
-                    <Link innerRef={(input) => { this.nextButton = input; }} to={{ pathname: '/results', state: { score: this.state.score } }} className="input-container-next-round next-round game-button">Next</Link> :
-                    <Link innerRef={(input) => { this.nextButton = input; }} to={`/round/${this.state.round + 1}`} className="input-container-next-round next-round game-button">Next</Link>
+                    <Link innerRef={this.nextButtonRef} to={{ pathname: '/results', state: { score: this.state.score } }} className="input-container-next-round next-round game-button">Next</Link> :
+                    <Link innerRef={this.nextButtonRef} to={`/round/${this.state.round + 1}`} className="input-container-next-round next-round game-button">Next</Link>
                 }
               </div>
             </Col>

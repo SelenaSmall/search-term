@@ -1,7 +1,8 @@
 import React from 'react';
 import Round from './Round';
-import { shallow } from 'enzyme';
+import { shallow, mount  } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
+import { BrowserRouter } from 'react-router-dom';
 
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -39,6 +40,23 @@ it('calls api to get all images on construction', () => {
   })
   expect(fetchRoundDataCalls).toEqual([1]);
 });
+
+// TODO attempt to test active element
+// https://stackoverflow.com/questions/37694900/testing-input-focus-in-enzyme/49448639#49448639
+//   TypeError: Cannot read property 'focus' of null
+//   console.log(this.guessInputRef)
+//   { current: null }
+it.skip('focuses on the guess box by default', () => {
+  API.fetchRoundData = (args) => Promise.resolve({});
+  API.fetchGameData = () => Promise.resolve({rounds: 1});
+  const wrapper = mount(<BrowserRouter>
+    <Round match={{params: {round: 1}}} />
+  </BrowserRouter>);
+
+  const focusedElement = document.activeElement;
+
+  expect(wrapper.find('.input-container-guess').matchesElement(focusedElement)).toEqual(true)
+})
 
 it('calls api and handles an error', () => {
   const fetchRoundDataCalls = [];

@@ -139,7 +139,11 @@ exports[`calls api to get all images on construction 1`] = `
           />
           <Link
             className="input-container-next-round next-round game-button"
-            innerRef={[Function]}
+            innerRef={
+              Object {
+                "current": null,
+              }
+            }
             replace={false}
             to={
               Object {
@@ -322,7 +326,11 @@ exports[`snapshot testing 1`] = `
           />
           <Link
             className="input-container-next-round next-round game-button"
-            innerRef={[Function]}
+            innerRef={
+              Object {
+                "current": null,
+              }
+            }
             replace={false}
             to="/round/2"
           >
