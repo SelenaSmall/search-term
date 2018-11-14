@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Row, Col } from 'reactstrap';
 import API from '../API'
 import './game.css';
+import Header from './Header';
 import Footer from './Footer';
 
 class Round extends Component {
@@ -75,24 +76,7 @@ class Round extends Component {
   render() {
     return(
       <div className="flex flex-column">
-        <section id="top-region">
-          <menu className="status-menu">
-            <ul>
-              <li className="status-menu-item status">
-                <span className="status-menu-item-label">Status</span>
-                <span className="status-menu-item-value">{this.state.status}</span>
-              </li>
-              <li className="status-menu-item score">
-                <span className="status-menu-item-label">Score</span>
-                <span className="status-menu-item-value">{this.state.score}</span>
-              </li>
-              <li className="status-menu-item timer">
-                <span className="status-menu-item-label">Time</span>
-                <span className="status-menu-item-value">{this.state.secondsRemaining}</span>
-              </li>
-            </ul>
-          </menu>
-        </section>
+        <Header status={this.state.status} score={this.state.score} secondsRemaining={this.state.secondsRemaining}/>
 
         <section id="middle-region">
           <h1 className="text-center">Round <span className="round">{this.state.round}</span></h1>

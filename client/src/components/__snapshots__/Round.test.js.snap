@@ -4,58 +4,11 @@ exports[`calls api to get all images on construction 1`] = `
 <div
   className="flex flex-column"
 >
-  <section
-    id="top-region"
-  >
-    <menu
-      className="status-menu"
-    >
-      <ul>
-        <li
-          className="status-menu-item status"
-        >
-          <span
-            className="status-menu-item-label"
-          >
-            Status
-          </span>
-          <span
-            className="status-menu-item-value"
-          >
-            IN-PROGRESS
-          </span>
-        </li>
-        <li
-          className="status-menu-item score"
-        >
-          <span
-            className="status-menu-item-label"
-          >
-            Score
-          </span>
-          <span
-            className="status-menu-item-value"
-          >
-            0
-          </span>
-        </li>
-        <li
-          className="status-menu-item timer"
-        >
-          <span
-            className="status-menu-item-label"
-          >
-            Time
-          </span>
-          <span
-            className="status-menu-item-value"
-          >
-            60
-          </span>
-        </li>
-      </ul>
-    </menu>
-  </section>
+  <Component
+    score={0}
+    secondsRemaining={60}
+    status="IN-PROGRESS"
+  />
   <section
     id="middle-region"
   >
@@ -168,58 +121,11 @@ exports[`snapshot testing 1`] = `
 <div
   className="flex flex-column"
 >
-  <section
-    id="top-region"
-  >
-    <menu
-      className="status-menu"
-    >
-      <ul>
-        <li
-          className="status-menu-item status"
-        >
-          <span
-            className="status-menu-item-label"
-          >
-            Status
-          </span>
-          <span
-            className="status-menu-item-value"
-          >
-            LOADING ...
-          </span>
-        </li>
-        <li
-          className="status-menu-item score"
-        >
-          <span
-            className="status-menu-item-label"
-          >
-            Score
-          </span>
-          <span
-            className="status-menu-item-value"
-          >
-            0
-          </span>
-        </li>
-        <li
-          className="status-menu-item timer"
-        >
-          <span
-            className="status-menu-item-label"
-          >
-            Time
-          </span>
-          <span
-            className="status-menu-item-value"
-          >
-            60
-          </span>
-        </li>
-      </ul>
-    </menu>
-  </section>
+  <Component
+    score={0}
+    secondsRemaining={60}
+    status="LOADING ..."
+  />
   <section
     id="middle-region"
   >
