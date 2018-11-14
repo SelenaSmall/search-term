@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic rendering 1`] = `
+<section
+  id="top-region"
+>
+  <menu
+    className="status-menu"
+  >
+    <ul>
+      <li
+        className="status-menu-item status"
+      >
+        <span
+          className="status-menu-item-label"
+        >
+          Status
+        </span>
+        <span
+          className="status-menu-item-value"
+        />
+      </li>
+      <li
+        className="status-menu-item score"
+      >
+        <span
+          className="status-menu-item-label"
+        >
+          Score
+        </span>
+        <span
+          className="status-menu-item-value"
+        />
+      </li>
+      <li
+        className="status-menu-item timer"
+      >
+        <span
+          className="status-menu-item-label"
+        >
+          Time
+        </span>
+        <span
+          className="status-menu-item-value"
+        />
+      </li>
+    </ul>
+  </menu>
+</section>
+`;

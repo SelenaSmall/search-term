@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshot testing 1`] = `
+exports[`basic rendering 1`] = `
 <div>
   <Component />
   <section
@@ -10,15 +10,22 @@ exports[`snapshot testing 1`] = `
       className="game-main-container text-center"
     >
       <div>
-        <h1>
-          Welcome to the Game
-        </h1>
-        <Link
-          className="game-button start-game-button"
-          replace={false}
-          to="/round/1"
+        <h1
+          className="congratulations"
         >
-          Start Game
+          Congratulations!
+        </h1>
+        <h2
+          className="final-score"
+        >
+          You scored 
+        </h2>
+        <Link
+          className="game-button"
+          replace={false}
+          to="/"
+        >
+          Home
         </Link>
       </div>
     </div>
