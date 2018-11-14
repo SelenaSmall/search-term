@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './game.css';
+import Footer from './Footer';
 
 const Game = () => (
     <div>
@@ -32,24 +33,7 @@ const Game = () => (
         </div>
       </section>
 
-      <section id="bottom-region" className="md:fixed">
-        <menu className="twitter-menu">
-          <ul>
-            <li className="twitter-menu-item twitter-menu-item-left status">
-              <a href="http://twitter.com/intent/user?screen_name=selenasmall88">
-                <img className="twitter-menu-item-avatar" src="/avatar-selena.jpg" alt="selena-small"></img>
-                <span>@selenasmall88</span>
-              </a>
-            </li>
-            <li className="twitter-menu-item status">
-              <a href="http://twitter.com/intent/user?screen_name=saramic">
-                <img className="twitter-menu-item-avatar" src="/avatar-michael.jpg" alt="michael-milewski"></img>
-                <span>@saramic</span>
-              </a>
-            </li>
-          </ul>
-        </menu>
-      </section>
+      <Footer />
     </div>
 )
 

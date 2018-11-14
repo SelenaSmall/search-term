@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic rendering 1`] = `
+<section
+  className="md:fixed"
+  id="bottom-region"
+>
+  <menu
+    className="twitter-menu"
+  >
+    <ul>
+      <li
+        className="twitter-menu-item twitter-menu-item-left status"
+      >
+        <a
+          href="http://twitter.com/intent/user?screen_name=selenasmall88"
+        >
+          <img
+            alt="selena-small"
+            className="twitter-menu-item-avatar"
+            src="/avatar-selena.jpg"
+          />
+          <span>
+            @selenasmall88
+          </span>
+        </a>
+      </li>
+      <li
+        className="twitter-menu-item status"
+      >
+        <a
+          href="http://twitter.com/intent/user?screen_name=saramic"
+        >
+          <img
+            alt="michael-milewski"
+            className="twitter-menu-item-avatar"
+            src="/avatar-michael.jpg"
+          />
+          <span>
+            @saramic
+          </span>
+        </a>
+      </li>
+    </ul>
+  </menu>
+</section>
+`;
