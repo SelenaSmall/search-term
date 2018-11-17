@@ -1,123 +1,139 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col } from 'reactstrap';
-import API from '../API'
+import API from '../API';
 import './game.css';
 import Header from './Header';
-import Footer from './Footer';
 
 class Round extends Component {
   constructor(props) {
     super(props);
-    const round = parseInt(props.match.params.round, 10)
-    this.state = { term: null, round: round, images: [], status: 'LOADING ...', secondsRemaining: 60, score: 0, interval: null }
-    this.fetchRoundData(round)
-    this.fetchGameData()
-    this.guessInputRef = React.createRef()
-    this.nextButtonRef = React.createRef()
-    this.handleGuess = this.handleGuess.bind(this)
-    this.startTimer = this.startTimer.bind(this)
-    this.tick = this.tick.bind(this)
-  }
-
-  componentWillReceiveProps(props) {
-    clearInterval(this.state.interval)
-    const round = parseInt(props.match.params.round, 10)
-    this.setState({round: round, secondsRemaining: 60, guess: ''})
-    this.fetchRoundData(round)
-  }
-
-  fetchRoundData(round) {
-    this.setState({status: 'LOADING ...', images: []})
-    API.fetchRoundData(round).then((data) => {
-      this.setState(data)
-      this.setState({status: 'IN-PROGRESS'})
-      this.startTimer()
-      this.guessInputRef.current.focus()
-    }).catch((error) => {
-      this.setState({status: 'ERROR'})
-    })
-  }
-
-  fetchGameData() {
-    API.fetchGameData().then((data) => {
-      this.setState({maxRounds: data.rounds})
-    })
-  }
-
-  startTimer() {
-    const interval = setInterval(this.tick, 1000);
-    this.setState({interval: interval })
-  }
-
-  tick() {
-    if (this.state.secondsRemaining <= 0 ) {
-      clearInterval(this.state.interval)
-    } else {
-      this.setState({secondsRemaining: this.state.secondsRemaining - 1})
-    }
-  }
-
-  handleGuess(event) {
-    this.setState({guess: event.target.value})
-    const REGEX = new RegExp(this.state.term)
-    if(REGEX.exec(event.target.value)) {
-      this.setState({status: 'WINNER'})
-      clearInterval(this.state.interval)
-      this.setState({score: this.state.score + this.state.secondsRemaining})
-      this.nextButtonRef.current.focus()
-    }
+    const round = parseInt(props.match.params.round, 10);
+    this.state = {
+      term: null, round, images: [], status: 'LOADING ...', secondsRemaining: 60, score: 0, interval: null,
+    };
+    this.fetchRoundData(round);
+    this.fetchGameData();
+    this.guessInputRef = React.createRef();
+    this.nextButtonRef = React.createRef();
+    this.handleGuess = this.handleGuess.bind(this);
+    this.startTimer = this.startTimer.bind(this);
+    this.tick = this.tick.bind(this);
   }
 
   componentDidMount() {
     // this.guessInputRef.current.focus(); // TODO breaks tests
   }
 
+  componentWillReceiveProps(props) {
+    const { interval } = this.state;
+    clearInterval(interval);
+    const round = parseInt(props.match.params.round, 10);
+    this.setState({ round, secondsRemaining: 60, guess: '' });
+    this.fetchRoundData(round);
+  }
+
+  fetchRoundData(round) {
+    this.setState({ status: 'LOADING ...', images: [] });
+    API.fetchRoundData(round).then((data) => {
+      this.setState(data);
+      this.setState({ status: 'IN-PROGRESS' });
+      this.startTimer();
+      this.guessInputRef.current.focus();
+    }).catch(() => {
+      this.setState({ status: 'ERROR' });
+    });
+  }
+
+  fetchGameData() {
+    API.fetchGameData().then((data) => {
+      this.setState({ maxRounds: data.rounds });
+    });
+  }
+
+  startTimer() {
+    const interval = setInterval(this.tick, 1000);
+    this.setState({ interval });
+  }
+
+  tick() {
+    const { secondsRemaining, interval } = this.state;
+    if (secondsRemaining <= 0) {
+      clearInterval(interval);
+    } else {
+      this.setState({ secondsRemaining: secondsRemaining - 1 });
+    }
+  }
+
+  handleGuess(event) {
+    const { value } = event.target;
+    const {
+      term, interval, score, secondsRemaining,
+    } = this.state;
+    this.setState({ guess: value });
+    const REGEX = new RegExp(term);
+    if (REGEX.exec(value)) {
+      this.setState({ status: 'WINNER' });
+      clearInterval(interval);
+      this.setState({ score: score + secondsRemaining });
+      this.nextButtonRef.current.focus();
+    }
+  }
+
   render() {
-    return(
+    const {
+      status, score, secondsRemaining, round, maxRounds, images, guess,
+    } = this.state;
+    return (
       <div className="flex flex-column">
-        <Header status={this.state.status} score={this.state.score} secondsRemaining={this.state.secondsRemaining}/>
+        <Header
+          status={status}
+          score={score}
+          secondsRemaining={secondsRemaining}
+        />
 
         <section id="middle-region">
-          <h1 className="text-center">Round <span className="round">{this.state.round}</span></h1>
+          <h1 className="text-center">
+Round
+            <span className="round">{round}</span>
+          </h1>
 
           <Row className="main-container-row">
             <Col sm="6">
-                <div className="images-container">
-                  { this.state.status === 'LOADING ...' ?
-                    <div className="background" /> :
-                    this.state.images.map( ({id, src}) => (
+              <div className="images-container">
+                { status === 'LOADING ...'
+                  ? <div className="background" />
+                  : images.map(({ id, src }) => (
                     <div className="images-container-single" key={id}>
-                      <img className="images-container-single-image" key={id} src={src} alt="nice try"/>
+                      <img className="images-container-single-image" key={id} src={src} alt="nice try" />
                     </div>
-                ))}
+                  ))}
               </div>
             </Col>
 
             <Col sm="6">
               <div className="input-container">
                 <h5>Guess the search term</h5>
-                 <textarea
+                <textarea
                   ref={this.guessInputRef}
                   className="input-container-guess"
-                  onChange={this.handleGuess }
-                  value={this.state.guess}
-                  disabled={this.state.status === 'WINNER'}></textarea>
+                  onChange={this.handleGuess}
+                  value={guess}
+                  disabled={status === 'WINNER'}
+                />
 
                 {
-                  this.state.round >= this.state.maxRounds ?
-                    <Link innerRef={this.nextButtonRef} to={{ pathname: '/results', state: { score: this.state.score } }} className="input-container-next-round next-round game-button">Next</Link> :
-                    <Link innerRef={this.nextButtonRef} to={`/round/${this.state.round + 1}`} className="input-container-next-round next-round game-button">Next</Link>
+                  round >= maxRounds
+                    ? <Link innerRef={this.nextButtonRef} to={{ pathname: '/results', state: { score } }} className="input-container-next-round next-round game-button">Next</Link>
+                    : <Link innerRef={this.nextButtonRef} to={`/round/${round + 1}`} className="input-container-next-round next-round game-button">Next</Link>
                 }
               </div>
             </Col>
           </Row>
         </section>
-
-        <Footer />
       </div>
-    )
+    );
   }
 }
 
-export default Round
+export default Round;

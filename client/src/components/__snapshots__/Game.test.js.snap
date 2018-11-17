@@ -2,7 +2,6 @@
 
 exports[`snapshot testing 1`] = `
 <div>
-  <Component />
   <section
     id="middle-region"
   >
@@ -23,6 +22,5 @@ exports[`snapshot testing 1`] = `
       </div>
     </div>
   </section>
-  <Component />
 </div>
 `;

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import fetchRoundData from './fetch-round-data'
+import fetchRoundData from './fetch-round-data';
 
 it('should request data from the backend for a given round', () => {
   const axiosGets = [];
@@ -12,7 +12,7 @@ it('should request data from the backend for a given round', () => {
   fetchRoundData(123);
 
   expect(axiosGets).toEqual(['/api/v1/rounds/123']);
-})
+});
 
 it('should return data from response', async () => {
   const data = { key: 'value1' };

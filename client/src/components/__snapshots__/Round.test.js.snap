@@ -1,5 +1,188 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`calls api and handles an error 1`] = `
+<div
+  className="flex flex-column"
+>
+  <Component
+    score={0}
+    secondsRemaining={60}
+    status="LOADING ..."
+  />
+  <section
+    id="middle-region"
+  >
+    <h1
+      className="text-center"
+    >
+      Round
+      <span
+        className="round"
+      >
+        1
+      </span>
+    </h1>
+    <Row
+      className="main-container-row"
+      tag="div"
+    >
+      <Col
+        sm="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        <div
+          className="images-container"
+        >
+          <div
+            className="background"
+          />
+        </div>
+      </Col>
+      <Col
+        sm="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        <div
+          className="input-container"
+        >
+          <h5>
+            Guess the search term
+          </h5>
+          <textarea
+            className="input-container-guess"
+            disabled={false}
+            onChange={[Function]}
+          />
+          <Link
+            className="input-container-next-round next-round game-button"
+            innerRef={
+              Object {
+                "current": null,
+              }
+            }
+            replace={false}
+            to="/round/2"
+          >
+            Next
+          </Link>
+        </div>
+      </Col>
+    </Row>
+  </section>
+</div>
+`;
+
+exports[`calls api and handles an error 2`] = `
+<div
+  className="flex flex-column"
+>
+  <Component
+    score={0}
+    secondsRemaining={60}
+    status="ERROR"
+  />
+  <section
+    id="middle-region"
+  >
+    <h1
+      className="text-center"
+    >
+      Round
+      <span
+        className="round"
+      >
+        1
+      </span>
+    </h1>
+    <Row
+      className="main-container-row"
+      tag="div"
+    >
+      <Col
+        sm="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        <div
+          className="images-container"
+        />
+      </Col>
+      <Col
+        sm="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        <div
+          className="input-container"
+        >
+          <h5>
+            Guess the search term
+          </h5>
+          <textarea
+            className="input-container-guess"
+            disabled={false}
+            onChange={[Function]}
+          />
+          <Link
+            className="input-container-next-round next-round game-button"
+            innerRef={
+              Object {
+                "current": null,
+              }
+            }
+            replace={false}
+            to={
+              Object {
+                "pathname": "/results",
+                "state": Object {
+                  "score": 0,
+                },
+              }
+            }
+          >
+            Next
+          </Link>
+        </div>
+      </Col>
+    </Row>
+  </section>
+</div>
+`;
+
 exports[`calls api to get all images on construction 1`] = `
 <div
   className="flex flex-column"
@@ -15,7 +198,7 @@ exports[`calls api to get all images on construction 1`] = `
     <h1
       className="text-center"
     >
-      Round 
+      Round
       <span
         className="round"
       >
@@ -113,7 +296,6 @@ exports[`calls api to get all images on construction 1`] = `
       </Col>
     </Row>
   </section>
-  <Component />
 </div>
 `;
 
@@ -132,7 +314,7 @@ exports[`snapshot testing 1`] = `
     <h1
       className="text-center"
     >
-      Round 
+      Round
       <span
         className="round"
       >
@@ -204,6 +386,5 @@ exports[`snapshot testing 1`] = `
       </Col>
     </Row>
   </section>
-  <Component />
 </div>
 `;

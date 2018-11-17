@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
-import Routes from './Routes'
-import { BrowserRouter } from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './Routes';
+import Footer from './components/Footer';
 
-class App extends Component {
-    render() {
-        return (
-            <BrowserRouter>
-                <Routes />
-            </BrowserRouter>
-    );
-    }
-}
-
-export default App;
+export default () => (
+  <div>
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
+    <Footer />
+  </div>
+);

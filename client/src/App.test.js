@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import { shallow } from 'enzyme';
+import Enzyme, { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import App from './App';
+
 Enzyme.configure({ adapter: new Adapter() });
 
 it('renders without crashing', () => {
@@ -15,6 +15,6 @@ it('renders without crashing', () => {
 });
 
 it('snapshot testing', () => {
-  const output = shallow(<App />)
-  expect(shallowToJson(output)).toMatchSnapshot()
-})
+  const output = shallow(<App />);
+  expect(shallowToJson(output)).toMatchSnapshot();
+});

@@ -2,7 +2,6 @@
 
 exports[`basic rendering 1`] = `
 <div>
-  <Component />
   <section
     id="middle-region"
   >
@@ -18,7 +17,7 @@ exports[`basic rendering 1`] = `
         <h2
           className="final-score"
         >
-          You scored 
+          You scored
         </h2>
         <Link
           className="game-button"
@@ -30,6 +29,5 @@ exports[`basic rendering 1`] = `
       </div>
     </div>
   </section>
-  <Component />
 </div>
 `;

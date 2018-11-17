@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ status, score, secondsRemaining}) => (
+export default ({ status, score, secondsRemaining }) => (
   <section id="top-region">
     <menu className="status-menu">
       <ul>
