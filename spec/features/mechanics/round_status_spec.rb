@@ -7,13 +7,15 @@ feature 'Round Status', js: true do
     end
 
     scenario 'Casper starts a round and data is not yet loaded' do
-      When 'user on a round' do
-        visit('/round/1')
+      When 'user on a round sees loading' do
+        with_api_route_paused do
+          visit('/round/1')
+          wait_for { focus_on(:status).status }.to eq('LOADING ...')
+        end
       end
 
-      Then 'status is loading' do
-        # TODO: only works because API is slow enough, it doesn't "stay that way"
-        wait_for { focus_on(:status).status }.to eq('LOADING ...')
+      Then 'the status updates to in progress' do
+        wait_for { focus_on(:status).status }.to eq('IN-PROGRESS')
       end
     end
 

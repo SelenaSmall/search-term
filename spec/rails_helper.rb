@@ -85,4 +85,6 @@ RSpec.configure do |config|
 
   # include PageFragments in features
   config.include PageFragments, type: :feature
+
+  config.include PauseService, type: :feature
 end
