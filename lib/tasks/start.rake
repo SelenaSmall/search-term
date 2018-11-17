@@ -15,4 +15,4 @@ namespace :start do
   end
 end
 
-task :start => 'start:development'
+task start: 'start:development'

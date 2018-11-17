@@ -8,6 +8,8 @@ feature 'Game play lifecycle', js: true do
       Term.create(phrase: 'haunted house')
     end
 
+    # binding.pry in place for demo
+    # rubocop:disable Lint/Debugger
     scenario 'WINNING a game' do
       When 'user starts the game' do
         visit('/')
@@ -76,5 +78,6 @@ feature 'Game play lifecycle', js: true do
         wait_for { focus_on(:results).final_score }.to match(/[0-9]/)
       end
     end
+    # rubocop:enable Lint/Debugger
   end
 end

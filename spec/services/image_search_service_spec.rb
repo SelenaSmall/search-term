@@ -3,7 +3,7 @@ require 'rails_helper'
 module Services
   describe ImageSearchService do
     it 'finds images using the search term provided' do
-      result_array = [ '1' => 'image 1', '2' => 'image 2']
+      result_array = ['1' => 'image 1', '2' => 'image 2']
       doc = double('doc')
 
       expect(Nokogiri::HTML).to receive(:parse).and_return(doc)

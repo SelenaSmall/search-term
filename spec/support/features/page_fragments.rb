@@ -7,11 +7,11 @@ module PageFragments
     string.to_s.split('_').map(&:capitalize).join
   end
 
-  def focus_on *args
+  def focus_on(*args)
     require File.join(
-        File.expand_path(File.dirname(__FILE__)),
-        'page_fragments',
-        args.map(&:to_s)
+      __dir__,
+      'page_fragments',
+      args.map(&:to_s)
     )
     mod = args.inject(PageFragments) do |klass, sub_klass|
       klass.const_get(classify(sub_klass))

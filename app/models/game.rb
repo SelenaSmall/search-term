@@ -1,3 +1,2 @@
-class Game < ActiveRecord::Base
-
+class Game < ApplicationRecord
 end

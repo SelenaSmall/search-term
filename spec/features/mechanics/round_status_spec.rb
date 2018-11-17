@@ -12,7 +12,7 @@ feature 'Round Status', js: true do
       end
 
       Then 'status is loading' do
-        # TODO only works because API is slow enough, it doesn't "stay that way"
+        # TODO: only works because API is slow enough, it doesn't "stay that way"
         wait_for { focus_on(:status).status }.to eq('LOADING ...')
       end
     end
@@ -39,5 +39,4 @@ feature 'Round Status', js: true do
       end
     end
   end
-
 end
