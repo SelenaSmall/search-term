@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Clearance::Controller
   before_action :pause_execution
 
   def pause_execution

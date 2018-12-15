@@ -35,6 +35,9 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # mailer setup for clearance authentication
+  config.action_mailer.default_url_options = { host: 'localhost:4001' }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

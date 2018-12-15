@@ -39,7 +39,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # api
 gem 'rack-cors'
 
+# administration
 gem 'administrate'
+
+# authentication
+gem 'clearance'
 
 group :development, :test do
   gem 'foreman', '~> 0.82.0'
