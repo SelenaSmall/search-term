@@ -9,11 +9,12 @@ class Round extends Component {
   constructor(props) {
     super(props);
     const round = parseInt(props.match.params.round, 10);
+    const gameName = props.match.params.gameName;
     this.state = {
-      term: null, round, images: [], status: 'LOADING ...', secondsRemaining: 60, score: 0, interval: null,
+      term: null, round, images: [], status: 'LOADING ...', secondsRemaining: 60, score: 0, interval: null, gameName,
     };
     this.fetchRoundData(round);
-    this.fetchGameData();
+    this.fetchGameData(gameName);
     this.guessInputRef = React.createRef();
     this.nextButtonRef = React.createRef();
     this.handleGuess = this.handleGuess.bind(this);
@@ -45,8 +46,8 @@ class Round extends Component {
     });
   }
 
-  fetchGameData() {
-    API.fetchGameData().then((data) => {
+  fetchGameData(gameId) {
+    API.fetchGameData(gameId).then((data) => {
       this.setState({ maxRounds: data.rounds });
     });
   }
@@ -82,7 +83,7 @@ class Round extends Component {
 
   render() {
     const {
-      status, score, secondsRemaining, round, maxRounds, images, guess,
+      status, score, secondsRemaining, round, maxRounds, images, guess, gameName,
     } = this.state;
     return (
       <div className="flex flex-column">
@@ -125,7 +126,7 @@ Round
                 {
                   round >= maxRounds
                     ? <Link innerRef={this.nextButtonRef} to={{ pathname: '/results', state: { score } }} className="input-container-next-round next-round game-button">Next</Link>
-                    : <Link innerRef={this.nextButtonRef} to={`/round/${round + 1}`} className="input-container-next-round next-round game-button">Next</Link>
+                    : <Link innerRef={this.nextButtonRef} to={`/game/${gameName}/round/${round + 1}`} className="input-container-next-round next-round game-button">Next</Link>
                 }
               </div>
             </Col>

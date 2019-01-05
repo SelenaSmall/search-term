@@ -2,7 +2,13 @@ module Api
   module V1
     class GamesController < ApplicationController
       def index
-        game = Game.first
+        games = Game.all
+
+        render json: { games: games || [] }
+      end
+
+      def show
+        game = Game.find(params[:id])
 
         render json: { rounds: game&.rounds || 0 }
       end

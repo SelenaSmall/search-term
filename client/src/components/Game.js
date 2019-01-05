@@ -8,7 +8,7 @@ const Game = () => (
       <div className="game-main-container text-center">
         <div>
           <h1>Welcome to the Game</h1>
-          <Link to="/round/1" className="game-button start-game-button">Start Game</Link>
+          <Link to="/game/1/round/1" className="game-button start-game-button" gameId="1">Start Game</Link>
         </div>
       </div>
     </section>

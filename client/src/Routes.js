@@ -7,7 +7,7 @@ import Results from './components/Results';
 export default () => (
   <Switch>
     <Route exact path="/" component={Game} />
-    <Route exact path="/round/:round" component={Round} />
+    <Route exact path="/game/:gameName/round/:round" component={Round} />
     <Route exact path="/results" component={Results} />
   </Switch>
 );
