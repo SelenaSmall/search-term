@@ -12,7 +12,7 @@ class GameDashboard < Administrate::BaseDashboard
     title: Field::String,
     rounds: Field::Number,
     featured_image_url: Field::String,
-    state: Field::Number,
+    state: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
