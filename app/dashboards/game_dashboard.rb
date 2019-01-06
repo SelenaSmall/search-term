@@ -13,6 +13,10 @@ class GameDashboard < Administrate::BaseDashboard
     rounds: Field::Number,
     featured_image_url: Field::String,
     state: Field::String,
+    terms: Field::HasMany.with_options(
+        searchable: true,
+        searchable_field: 'name',
+    ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -50,6 +54,7 @@ class GameDashboard < Administrate::BaseDashboard
     :rounds,
     :featured_image_url,
     :state,
+    :terms,
   ].freeze
 
   # Overwrite this method to customize how games are displayed

@@ -45,7 +45,7 @@ class TermDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how terms are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(term)
-  #   "Term ##{term.id}"
-  # end
+  def display_resource(term)
+    "Term: #{term.phrase}"
+  end
 end
