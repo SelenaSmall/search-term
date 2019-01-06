@@ -20,6 +20,7 @@ class Game extends Component {
     const games = this.state.games.map( (game) =>
       <div className="flex-1 w-1/2 px-2">
         <div className="max-w-sm rounded overflow-hidden shadow-lg m-auto">
+          <img className="w-full" src={game.featured_image_url} alt="Sunset in the mountains" />
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2">{game.title}</div>
             <p className="text-grey-darker text-base">

@@ -9,7 +9,10 @@ class GameDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    title: Field::String,
     rounds: Field::Number,
+    featured_image_url: Field::String,
+    state: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -21,8 +24,9 @@ class GameDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
+    :title,
     :rounds,
-    :created_at,
+    :state,
     :updated_at,
   ].freeze
 
@@ -30,7 +34,10 @@ class GameDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
+    :title,
     :rounds,
+    :featured_image_url,
+    :state,
     :created_at,
     :updated_at,
   ].freeze
@@ -39,7 +46,10 @@ class GameDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :title,
     :rounds,
+    :featured_image_url,
+    :state,
   ].freeze
 
   # Overwrite this method to customize how games are displayed
