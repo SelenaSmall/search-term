@@ -14,11 +14,6 @@
     margin-bottom: 40px;
 }
 
-.game-main-container div {
-    display: table-cell;
-    vertical-align: middle;
-}
-
 .game-button {
     line-height: 50px;
     border: 1px solid grey;
@@ -36,7 +31,6 @@
 }
 
 .start-game-button {
-    padding: 30px 100px;
     font-size: 20px;
 }
 

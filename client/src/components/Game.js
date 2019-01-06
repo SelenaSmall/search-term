@@ -18,7 +18,16 @@ class Game extends Component {
 
   render() {
     const games = this.state.games.map( (game) =>
-      <Link key={game.id} to={`/game/${game.id}/round/1`} className="game-button start-game-button">Start Game</Link>
+      <div className="flex-1 w-1/2 px-2">
+        <div className="max-w-sm rounded overflow-hidden shadow-lg m-auto">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">{game.title}</div>
+            <p className="text-grey-darker text-base">
+              <Link key={game.id} to={`/game/${game.id}/round/1`} className="game-button start-game-button">Start Game</Link>
+            </p>
+          </div>
+        </div>
+      </div>
     );
 
     return (
@@ -28,7 +37,11 @@ class Game extends Component {
             <div>
               <h1>Welcome to the Game</h1>
 
-              {games}
+              <div className="px-2">
+                <div className="flex -mx-2">
+                  {games}
+                </div>
+              </div>
 
             </div>
           </div>
