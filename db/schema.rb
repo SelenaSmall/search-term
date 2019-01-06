@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_06_010326) do
+ActiveRecord::Schema.define(version: 2019_01_06_070252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 2019_01_06_010326) do
     t.integer "state", default: 0
     t.string "featured_image_url"
     t.index ["title"], name: "index_games_on_title", unique: true
+  end
+
+  create_table "games_terms", id: false, force: :cascade do |t|
+    t.integer "game_id"
+    t.uuid "term_id"
+    t.index ["game_id"], name: "index_games_terms_on_game_id"
+    t.index ["term_id"], name: "index_games_terms_on_term_id"
   end
 
   create_table "terms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -44,4 +51,6 @@ ActiveRecord::Schema.define(version: 2019_01_06_010326) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  add_foreign_key "games_terms", "games"
+  add_foreign_key "games_terms", "terms"
 end

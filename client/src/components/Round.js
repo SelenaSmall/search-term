@@ -13,7 +13,7 @@ class Round extends Component {
     this.state = {
       term: null, round, images: [], status: 'LOADING ...', secondsRemaining: 60, score: 0, interval: null, gameName,
     };
-    this.fetchRoundData(round);
+    this.fetchRoundData(round, gameName);
     this.fetchGameData(gameName);
     this.guessInputRef = React.createRef();
     this.nextButtonRef = React.createRef();
@@ -30,13 +30,14 @@ class Round extends Component {
     const { interval } = this.state;
     clearInterval(interval);
     const round = parseInt(props.match.params.round, 10);
-    this.setState({ round, secondsRemaining: 60, guess: '' });
-    this.fetchRoundData(round);
+    const gameName = props.match.params.gameName;
+    this.setState({ round, secondsRemaining: 60, guess: '', gameName });
+    this.fetchRoundData(round, gameName);
   }
 
-  fetchRoundData(round) {
+  fetchRoundData(round, gameName) {
     this.setState({ status: 'LOADING ...', images: [] });
-    API.fetchRoundData(round).then((data) => {
+    API.fetchRoundData(round, gameName).then((data) => {
       this.setState(data);
       this.setState({ status: 'IN-PROGRESS' });
       this.startTimer();

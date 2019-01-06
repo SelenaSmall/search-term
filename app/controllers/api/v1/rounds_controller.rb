@@ -2,7 +2,8 @@ module Api
   module V1
     class RoundsController < ApplicationController
       def show
-        term   = Term.get_term(params[:id])
+        term   = Game.find(params[:gameName]).get_term_for_round(params[:id].to_i)
+
         images = ImageSearchService
                  .new(search_term: term.phrase)
                  .call
