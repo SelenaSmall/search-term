@@ -2,7 +2,9 @@ module Api
   module V1
     class RoundsController < ApplicationController
       def show
-        term   = Game.find(params[:gameName]).get_term_for_round(params[:id].to_i)
+        game = Game.find(params[:gameName])
+        term   = game.get_term_for_round(params[:id].to_i)
+        multi_choice = game.find_multi_choice(term)
 
         images = ImageSearchService
                  .new(search_term: term.phrase)
@@ -11,7 +13,7 @@ module Api
                  .each_with_index
                  .map { |image, index| { id: index, src: image } }
 
-        render json: { term: term.phrase, images: images }
+        render json: { term: term.phrase, images: images, terms: multi_choice }
       end
     end
   end

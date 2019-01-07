@@ -13,6 +13,7 @@ class GameDashboard < Administrate::BaseDashboard
     rounds: Field::Number,
     featured_image_url: Field::String,
     state: Field::String,
+    game_style: Field::String,
     terms: Field::HasMany.with_options(
         searchable: true,
         searchable_field: 'name',
@@ -42,6 +43,7 @@ class GameDashboard < Administrate::BaseDashboard
     :rounds,
     :featured_image_url,
     :state,
+    :game_style,
     :created_at,
     :updated_at,
   ].freeze
@@ -54,6 +56,7 @@ class GameDashboard < Administrate::BaseDashboard
     :rounds,
     :featured_image_url,
     :state,
+    :game_style,
     :terms,
   ].freeze
 
