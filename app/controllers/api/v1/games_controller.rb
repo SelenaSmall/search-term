@@ -10,7 +10,7 @@ module Api
       def show
         game = Game.find(params[:id])
 
-        render json: { rounds: game&.rounds || 0 }
+        render json: game.slice(:rounds, :game_style)
       end
     end
   end

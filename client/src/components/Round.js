@@ -11,10 +11,11 @@ class Round extends Component {
     const round = parseInt(props.match.params.round, 10);
     const gameName = props.match.params.gameName;
     this.state = {
-      term: null, round, images: [], status: 'LOADING ...', secondsRemaining: 60, score: 0, interval: null, gameName,
+      term: null, round, images: [], status: 'LOADING ...', secondsRemaining: 60, score: 0, interval: null, gameName, terms: [],
     };
-    this.fetchRoundData(round, gameName);
     this.fetchGameData(gameName);
+    const { gameStyle } = this.state;
+    this.fetchRoundData(round, gameName, gameStyle);
     this.guessInputRef = React.createRef();
     this.nextButtonRef = React.createRef();
     this.handleGuess = this.handleGuess.bind(this);
@@ -35,13 +36,15 @@ class Round extends Component {
     this.fetchRoundData(round, gameName);
   }
 
-  fetchRoundData(round, gameName) {
+  fetchRoundData(round, gameName, gameStyle) {
     this.setState({ status: 'LOADING ...', images: [] });
     API.fetchRoundData(round, gameName).then((data) => {
       this.setState(data);
       this.setState({ status: 'IN-PROGRESS' });
       this.startTimer();
-      this.guessInputRef.current.focus();
+      if (gameStyle === 'text') {
+        this.guessInputRef.current.focus();
+      }
     }).catch(() => {
       this.setState({ status: 'ERROR' });
     });
@@ -49,7 +52,7 @@ class Round extends Component {
 
   fetchGameData(gameId) {
     API.fetchGameData(gameId).then((data) => {
-      this.setState({ maxRounds: data.rounds });
+      this.setState({ maxRounds: data.rounds, gameStyle: data.game_style });
     });
   }
 
@@ -84,8 +87,11 @@ class Round extends Component {
 
   render() {
     const {
-      status, score, secondsRemaining, round, maxRounds, images, guess, gameName,
+      status, score, secondsRemaining, round, maxRounds, images, guess, gameName, gameStyle, terms,
     } = this.state;
+
+    const choices = terms.map( term => <li><button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded min-w-full mb-1" onClick={this.handleGuess} value={term} key={term}>{term}</button></li> );
+
     return (
       <div className="flex flex-column">
         <Header
@@ -116,13 +122,17 @@ Round
             <Col sm="6">
               <div className="input-container">
                 <h5>Guess the search term</h5>
-                <textarea
-                  ref={this.guessInputRef}
-                  className="input-container-guess"
-                  onChange={this.handleGuess}
-                  value={guess}
-                  disabled={status === 'WINNER'}
-                />
+                {
+                  gameStyle === 'text'
+                    ? <textarea
+                        ref={this.guessInputRef}
+                        className="input-container-guess"
+                        onChange={this.handleGuess}
+                        value={guess}
+                        disabled={status === 'WINNER'}
+                      />
+                    : <ul class="list-reset">{choices}</ul>
+                }
 
                 {
                   round >= maxRounds
