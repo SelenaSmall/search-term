@@ -41,11 +41,35 @@ feature 'Round Status', js: true do
       end
     end
 
-    scenario "John gets the right answer and status is WINNER"
-    # TODO
+    scenario "John gets the right answer and status is WINNER" do
+      When 'user on a round and the round loads' do
+        visit('/game/1/round/1')
+      end
 
-    scenario "John waits too long and status is TIME-UP"
-    # TODO
+      And "submits the correct answer within the time limit" do
+        pending "the app is broken"
+        focus_on(:game).fill_guess('test')
+      end
+
+      Then 'status is winner' do
+        wait_for { focus_on(:status).status }.to eq('WINNER')
+      end
+    end
+
+    scenario "John waits too long and status is TIME-UP" do
+      When 'user on a round and the round loads' do
+        visit('/game/1/round/1')
+      end
+
+      But "doesn't submit an answer within the time limit" do
+        pending "the app is broken"
+        sleep 60
+      end
+
+      Then 'status is time-up' do
+        wait_for { focus_on(:status).status }.to eq('TIME-UP')
+      end
+    end
   end
 
   context 'The database does not have the minimum setup' do
