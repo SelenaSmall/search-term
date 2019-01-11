@@ -40,6 +40,12 @@ feature 'Round Status', js: true do
         wait_for { focus_on(:status).status }.to eq('ERROR')
       end
     end
+
+    scenario "John gets the right answer and status is WINNER"
+    # TODO
+
+    scenario "John waits too long and status is TIME-UP"
+    # TODO
   end
 
   context 'The database does not have the minimum setup' do
