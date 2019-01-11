@@ -22,7 +22,7 @@ class Game extends Component {
         <div className="max-w-sm rounded overflow-hidden shadow-lg m-auto">
           <img className="w-full" src={game.featured_image_url} alt="Sunset in the mountains" />
           <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">{game.title}</div>
+            <div className="game-title font-bold text-xl mb-2">{game.title}</div>
             <p className="text-grey-darker text-base">
               <Link key={game.id} to={`/game/${game.id}/round/1`} className="game-button start-game-button">Start Game</Link>
             </p>
