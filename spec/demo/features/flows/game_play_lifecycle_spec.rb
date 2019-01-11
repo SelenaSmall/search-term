@@ -23,15 +23,16 @@ feature 'Game play lifecycle', js: true do
     """ do
       When "Michael signs in as admin" do
         # TODO can we not just step through this and have only 1 binding pry?
-        binding.pry
+        # maybe through a break 33 break 34 statement? cut and paste? autogenerate with # break comment?
+        # binding.pry
         # TODO page fragment
         # TODO make font bigger on the login page
         # TODO auto size the borwser to the right size
         visit("http://localhost:4011/admin")
-        binding.pry
+        # binding.pry
         fill_in "Email", with: @user.email
         fill_in "Password", with: @user.password
-        binding.pry
+        # binding.pry
         click_on "Sign in"
       end
 
@@ -56,6 +57,9 @@ feature 'Game play lifecycle', js: true do
         binding.pry
         click_on "Create Term"
         binding.pry
+        # live code to this
+        # focus_on(:admin, :term).create_term("Caroline Wozniacki")
+        # focus_on(:admin, :term).create_term("Roger Federer")
       end
 
       Then "2 terms are created for 2018 AO winners" do
