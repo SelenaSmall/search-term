@@ -29,6 +29,17 @@ feature 'Round Status', js: true do
         wait_for { focus_on(:status).status }.to eq('IN-PROGRESS')
       end
     end
+
+    scenario "the API errors" do
+      When 'user on a round and the round loads but errors' do
+        ForceApiError.force("something went wrong")
+        visit('/game/1/round/1')
+      end
+
+      Then 'status is error' do
+        wait_for { focus_on(:status).status }.to eq('ERROR')
+      end
+    end
   end
 
   context 'The database does not have the minimum setup' do
