@@ -10,6 +10,8 @@ class Game < ApplicationRecord
   end
 
   def find_multi_choice(term)
-    game_style == 'text' ? [] : terms.order(:created_at).last(4).map { |term| term.phrase }
+    multi_choice_terms = terms.reject{|t| t==term}.shuffle.first(3)
+    multi_choice_terms << term
+    game_style == 'text' ? [] : multi_choice_terms.map(&:phrase).shuffle
   end
 end
