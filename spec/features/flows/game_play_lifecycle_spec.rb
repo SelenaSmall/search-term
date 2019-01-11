@@ -3,9 +3,9 @@ require 'rails_helper'
 feature 'Game play lifecycle', js: true do
   context 'the game terms are configured' do
     before do
-      Game.create(rounds: 2)
-      Term.create(phrase: 'ghost')
-      Term.create(phrase: 'haunted house')
+      game = Game.create(rounds: 2, title: "halloween")
+      game.terms << Term.create(phrase: 'ghost')
+      game.terms << Term.create(phrase: 'haunted house')
     end
 
     # binding.pry in place for demo
