@@ -37,6 +37,9 @@ class Round extends Component {
   }
 
   fetchRoundData(round, gameName, gameStyle) {
+    // TODO: warning around setting state
+    // setState on a component that is not yet mounted
+    // Instead, assign to `this.state` directly or define a `state = {};
     this.setState({ status: 'LOADING ...', images: [] });
     API.fetchRoundData(round, gameName).then((data) => {
       this.setState(data);
@@ -134,6 +137,7 @@ Round
                     : <ul class="list-reset">{choices}</ul>
                 }
 
+                {/* TODO: below is a warning Failed prop type: Invalid prop `innerRef` supplied to `Link`.*/}
                 {
                   round >= maxRounds
                     ? <Link innerRef={this.nextButtonRef} to={{ pathname: '/results', state: { score } }} className="input-container-next-round next-round game-button">Next</Link>

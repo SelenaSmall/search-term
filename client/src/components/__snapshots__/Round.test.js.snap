@@ -66,10 +66,8 @@ exports[`calls api and handles an error 1`] = `
           <h5>
             Guess the search term
           </h5>
-          <textarea
-            className="input-container-guess"
-            disabled={false}
-            onChange={[Function]}
+          <ul
+            class="list-reset"
           />
           <Link
             className="input-container-next-round next-round game-button"
@@ -79,7 +77,7 @@ exports[`calls api and handles an error 1`] = `
               }
             }
             replace={false}
-            to="/round/2"
+            to="/game/undefined/round/2"
           >
             Next
           </Link>
@@ -152,10 +150,8 @@ exports[`calls api and handles an error 2`] = `
           <h5>
             Guess the search term
           </h5>
-          <textarea
-            className="input-container-guess"
-            disabled={false}
-            onChange={[Function]}
+          <ul
+            class="list-reset"
           />
           <Link
             className="input-container-next-round next-round game-button"
@@ -268,10 +264,8 @@ exports[`calls api to get all images on construction 1`] = `
           <h5>
             Guess the search term
           </h5>
-          <textarea
-            className="input-container-guess"
-            disabled={false}
-            onChange={[Function]}
+          <ul
+            class="list-reset"
           />
           <Link
             className="input-container-next-round next-round game-button"
@@ -365,10 +359,8 @@ exports[`snapshot testing 1`] = `
           <h5>
             Guess the search term
           </h5>
-          <textarea
-            className="input-container-guess"
-            disabled={false}
-            onChange={[Function]}
+          <ul
+            class="list-reset"
           />
           <Link
             className="input-container-next-round next-round game-button"
@@ -378,7 +370,7 @@ exports[`snapshot testing 1`] = `
               }
             }
             replace={false}
-            to="/round/2"
+            to="/game/undefined/round/2"
           >
             Next
           </Link>

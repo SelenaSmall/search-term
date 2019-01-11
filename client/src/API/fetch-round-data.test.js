@@ -9,9 +9,9 @@ it('should request data from the backend for a given round', () => {
     return new Promise(() => {});
   };
 
-  fetchRoundData(123);
+  fetchRoundData(123, "game-1");
 
-  expect(axiosGets).toEqual(['/api/v1/rounds/123']);
+  expect(axiosGets).toEqual(['/api/v1/rounds/123?gameName=game-1']);
 });
 
 it('should return data from response', async () => {
