@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Adapter from 'enzyme-adapter-react-16';
 import Round from './Round';
 import API from '../API';
+import Header from './Header';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -93,4 +94,87 @@ it.skip('sets state to winner if guess is correct', () => {
   expect(output.find('.status .status-menu-item-value').text()).toEqual('IN-PROGRESS');
   output.find('textarea.input-container-guess').simulate('change', { target: { value: 'ghost' } });
   expect(output.find('.status .status-menu-item-value').text()).toEqual('WINNER');
+});
+
+describe('status', () => {
+  it('is set to LOADING ... by default', () => {
+    const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
+    expect(wrapper.find(Header).at(0).prop('status')).toBe('LOADING ...');
+  });
+
+  it('is set to IN-PROGRESS once the API call comes back', () => {
+    expect.assertions(2);
+
+    const roundDataPromise = Promise.resolve({ term: 'bjorn borg' });
+    API.fetchRoundData = () => roundDataPromise;
+
+    const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
+
+    expect(wrapper.find(Header).at(0).prop('status')).toBe('LOADING ...');
+    roundDataPromise.then(() => {
+      expect(wrapper.find(Header).at(0).prop('status')).toBe('IN-PROGRESS');
+    });
+  });
+
+  it.skip('is set to ERROR if the API call fails', () => {
+    expect.assertions(2);
+
+    const roundDataPromise = Promise.reject(new Error('oops'));
+    API.fetchRoundData = () => roundDataPromise;
+
+    const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
+
+    expect(wrapper.find(Header).at(0).prop('status')).toBe('LOADING ...');
+    roundDataPromise.catch(() => {
+      expect(wrapper.find(Header).at(0).prop('status')).toBe('ERROR');
+    });
+  });
+
+  it('is set to WINNER the right answer is guessed', () => {
+    expect.assertions(3);
+
+    const roundDataPromise = Promise.resolve({ term: 'bjorn borg' });
+    API.fetchRoundData = () => roundDataPromise;
+
+    const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
+
+    expect(wrapper.find(Header).at(0).prop('status')).toBe('LOADING ...');
+    roundDataPromise.then(() => {
+      expect(wrapper.find(Header).at(0).prop('status')).toBe('IN-PROGRESS');
+      wrapper.instance().handleGuess({target: { value: 'bjorn borg'}});
+      expect(wrapper.find(Header).at(0).prop('status')).toBe('WINNER');
+    });
+  });
+
+  it('is set to TIME-IS-UP once the time runs out', () => {
+    expect.assertions(3);
+
+    const roundDataPromise = Promise.resolve({ term: 'bjorn borg' });
+    API.fetchRoundData = () => roundDataPromise;
+
+    const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
+
+    expect(wrapper.find(Header).at(0).prop('status')).toBe('LOADING ...');
+    roundDataPromise.then(() => {
+      expect(wrapper.find(Header).at(0).prop('status')).toBe('IN-PROGRESS');
+      wrapper.instance().timeIsUp();
+      expect(wrapper.find(Header).at(0).prop('status')).toBe('TIME-IS-UP');
+    });
+  });
+
+  it('is set to WRONG if the wrong answer is guessed', () => {
+    expect.assertions(3);
+
+    const roundDataPromise = Promise.resolve({ term: 'bjorn borg' });
+    API.fetchRoundData = () => roundDataPromise;
+
+    const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
+
+    expect(wrapper.find(Header).at(0).prop('status')).toBe('LOADING ...');
+    roundDataPromise.then(() => {
+      expect(wrapper.find(Header).at(0).prop('status')).toBe('IN-PROGRESS');
+      wrapper.instance().handleGuess({target: { value: 'martina navratilova'}});
+      expect(wrapper.find(Header).at(0).prop('status')).toBe('WRONG');
+    });
+  });
 });

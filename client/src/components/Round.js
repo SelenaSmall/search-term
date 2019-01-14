@@ -21,6 +21,7 @@ class Round extends Component {
     this.handleGuess = this.handleGuess.bind(this);
     this.startTimer = this.startTimer.bind(this);
     this.tick = this.tick.bind(this);
+    this.timeIsUp = this.timeIsUp.bind(this);
   }
 
   componentDidMount() {
@@ -65,18 +66,25 @@ class Round extends Component {
   }
 
   tick() {
-    const { secondsRemaining, interval } = this.state;
+    const { secondsRemaining } = this.state;
     if (secondsRemaining <= 0) {
-      clearInterval(interval);
+      this.timeIsUp();
     } else {
-      this.setState({ secondsRemaining: secondsRemaining - 1 });
+      (secondsRemaining);
+      this.setState({ secondsRemaining: secondsRemaining - 1 })
     }
+  }
+
+  timeIsUp() {
+    const { interval } = this.state;
+    clearInterval(interval);
+    this.setState({ status: 'TIME-IS-UP' });
   }
 
   handleGuess(event) {
     const { value } = event.target;
     const {
-      term, interval, score, secondsRemaining,
+      term, interval, score, secondsRemaining, gameStyle,
     } = this.state;
     this.setState({ guess: value });
     const REGEX = new RegExp(term);
@@ -84,7 +92,14 @@ class Round extends Component {
       this.setState({ status: 'WINNER' });
       clearInterval(interval);
       this.setState({ score: score + secondsRemaining });
-      this.nextButtonRef.current.focus();
+      this.nextButtonRef.current && this.nextButtonRef.current.focus();
+    } else {
+      this.setState({ status: 'WRONG' });
+      if (gameStyle === 'multi_choice') {
+        clearInterval(interval);
+        this.setState({ score: score + secondsRemaining });
+        this.nextButtonRef.current && this.nextButtonRef.current.focus();
+      }
     }
   }
 
