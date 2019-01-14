@@ -7,7 +7,7 @@ feature 'Round Status', js: true do
       game.terms << Term.create(phrase: 'test')
     end
 
-    scenario 'Casper starts a round and data is not yet loaded' do
+    scenario 'John starts a round and data is not yet loaded' do
       When 'user on a round sees loading' do
         with_api_route_paused do
           visit('/game/1/round/1')
@@ -21,7 +21,7 @@ feature 'Round Status', js: true do
       end
     end
 
-    scenario 'Casper starts a round and data is loaded' do
+    scenario 'John starts a round and data is loaded' do
       When 'user on a round and the round loads' do
         visit('/game/1/round/1')
         # binding.pry
@@ -85,7 +85,7 @@ feature 'Round Status', js: true do
   end
 
   context 'The database does not have the minimum setup' do
-    scenario 'Casper tries to start a round and is informed there is an error' do
+    scenario 'John tries to start a round and is informed there is an error' do
       When 'user on a round and the round loads' do
         visit('/game/1/round/1')
         # binding.pry
