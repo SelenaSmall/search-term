@@ -86,16 +86,6 @@ it('calls api and handles an error', () => {
   });
 });
 
-it.skip('sets state to winner if guess is correct', () => {
-  API.fetchGameData = () => Promise.resolve({ rounds: 1 });
-  API.fetchRoundData = () => Promise.resolve({ term: 'ghost' });
-
-  const output = shallow(<Round match={{ params: { round: 1 } }} />);
-  expect(output.find('.status .status-menu-item-value').text()).toEqual('IN-PROGRESS');
-  output.find('textarea.input-container-guess').simulate('change', { target: { value: 'ghost' } });
-  expect(output.find('.status .status-menu-item-value').text()).toEqual('WINNER');
-});
-
 describe('status', () => {
   it('is set to LOADING ... by default', () => {
     const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
