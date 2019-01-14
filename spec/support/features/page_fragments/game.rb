@@ -8,6 +8,10 @@ module PageFragments
       browser.find('.input-container-guess').fill_in(with: guess)
     end
 
+    def select_guess_choice(guess)
+      browser.find('button', text: guess).click
+    end
+
     def have_another_guess(guess)
       browser.find('.input-container-guess').send_keys(guess)
     end
