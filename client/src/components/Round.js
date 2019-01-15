@@ -55,7 +55,7 @@ class Round extends Component {
 
   fetchRoundData(round, gameName, gameStyle) {
     if(this._isMounted) {
-      this.setState({ status: 'LOADING ...' });
+      this.setState({ status: 'LOADING ...' }); // TODO live fix
     }
     API.fetchRoundData(round, gameName).then((data) => {
       this.setState(data);
