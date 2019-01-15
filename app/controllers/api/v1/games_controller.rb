@@ -2,7 +2,7 @@ module Api
   module V1
     class GamesController < ApplicationController
       def index
-        games = Game.where(state: :published).  all
+        games = Game.where(state: :published)
 
         render json: { games: games || [] }
       end

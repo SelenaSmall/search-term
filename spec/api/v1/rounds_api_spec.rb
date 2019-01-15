@@ -3,10 +3,11 @@ require 'rails_helper'
 describe Api::V1::RoundsController, type: :controller do
   describe 'get' do
     it 'should retrieve rounds data' do
-      Term.create(phrase: 'tequila')
+      game = Game.create(id: 1, title: "Test")
+      game.terms << Term.create(phrase: 'tequila')
 
       VCR.use_cassette('google_image_search') do
-        get(:show, params: { id: 1 }, format: :json)
+        get(:show, params: { id: 1, gameName: 1 }, format: :json)
       end
 
       expect(response.code).to eq '200'

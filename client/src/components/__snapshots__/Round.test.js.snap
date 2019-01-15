@@ -7,7 +7,7 @@ exports[`calls api and handles an error 1`] = `
   <Component
     score={0}
     secondsRemaining={60}
-    status="IN-PROGRESS"
+    status="LOADING ..."
   />
   <section
     id="middle-region"
@@ -41,7 +41,11 @@ exports[`calls api and handles an error 1`] = `
       >
         <div
           className="images-container"
-        />
+        >
+          <div
+            className="background"
+          />
+        </div>
       </Col>
       <Col
         sm="6"
@@ -281,7 +285,7 @@ exports[`snapshot testing 1`] = `
   <Component
     score={0}
     secondsRemaining={60}
-    status="IN-PROGRESS"
+    status="LOADING ..."
   />
   <section
     id="middle-region"
@@ -315,7 +319,11 @@ exports[`snapshot testing 1`] = `
       >
         <div
           className="images-container"
-        />
+        >
+          <div
+            className="background"
+          />
+        </div>
       </Col>
       <Col
         sm="6"

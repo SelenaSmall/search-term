@@ -14,8 +14,8 @@ class Round extends Component {
       term: null,
       round,
       images: [],
-      status: 'IN-PROGRESS',
-      // status: 'LOADING ...', // TODO live fix
+      // status: 'IN-PROGRESS',
+      status: 'LOADING ...', // TODO live fix
       secondsRemaining: 60,
       score: 0,
       interval: null,
@@ -49,7 +49,7 @@ class Round extends Component {
   fetchRoundData(round, gameName, gameStyle) {
     API.fetchRoundData(round, gameName).then((data) => {
       this.setState(data);
-      // this.setState({ status: 'IN-PROGRESS' }); // TODO live fix
+      this.setState({ status: 'IN-PROGRESS' }); // TODO live fix
       this.startTimer();
       if (gameStyle === 'text') {
         this.guessInputRef.current.focus();

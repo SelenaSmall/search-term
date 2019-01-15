@@ -8,15 +8,12 @@ feature 'Game play lifecycle', js: true do
       game.terms << Term.create(phrase: 'haunted house')
     end
 
-    # binding.pry in place for demo
-    # rubocop:disable Lint/Debugger
     scenario 'WINNING a game' do
       When 'user starts the game' do
         visit('/')
         wait_for { focus_on(:welcome).text }.to eq('Welcome to the Game')
 
-        binding.pry
-        focus_on(:welcome).start_game
+        focus_on(:welcome).start_game # BREAK
       end
 
       Then 'the game commences' do
@@ -26,8 +23,7 @@ feature 'Game play lifecycle', js: true do
         wait_for { focus_on(:game).images.count }.to eq(9)
       end
 
-      When 'the user submits an answer' do
-        binding.pry
+      When 'the user submits an answer' do # BREAK
         focus_on(:game).fill_guess('ghost')
       end
 
@@ -36,8 +32,7 @@ feature 'Game play lifecycle', js: true do
         wait_for { focus_on(:status).score }.to match(/[0-9]/)
       end
 
-      When 'the user starts the next round' do
-        binding.pry
+      When 'the user starts the next round' do # BREAK
         focus_on(:game).next_round
       end
 
@@ -48,17 +43,15 @@ feature 'Game play lifecycle', js: true do
         wait_for { focus_on(:game).images.count }.to eq(9)
       end
 
-      When 'the user submits wrong guess' do
-        binding.pry
+      When 'the user submits wrong guess' do # BREAK
         focus_on(:game).fill_guess("haunted\n")
       end
 
-      Then 'the status stays as in progress' do
-        wait_for { focus_on(:status).status }.to eq('IN-PROGRESS')
+      Then 'the status changes to WRONG' do
+        wait_for { focus_on(:status).status }.to eq('WRONG')
       end
 
-      When 'the user keeps typing and guesses correctly' do
-        binding.pry
+      When 'the user keeps typing and guesses correctly' do # BREAK
         focus_on(:game).have_another_guess("haunted house")
       end
 
@@ -67,17 +60,14 @@ feature 'Game play lifecycle', js: true do
         wait_for { focus_on(:status).score }.to match(/[0-9]/)
       end
 
-      When 'the user starts the next round' do
-        binding.pry
+      When 'the user starts the next round' do # BREAK
         focus_on(:game).next_round
       end
 
-      Then 'Game is finished with a final score' do
+      Then 'Game is finished with a final score' do # BREAK
         wait_for { focus_on(:results).congratulations }.to eq('Congratulations!')
-        binding.pry
         wait_for { focus_on(:results).final_score }.to match(/[0-9]/)
       end
     end
-    # rubocop:enable Lint/Debugger
   end
 end
