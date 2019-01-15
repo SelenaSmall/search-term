@@ -25,22 +25,24 @@ feature 'Game play lifecycle', js: true do
         # grep -n '# BREAK' spec/demo/features/flows/game_play_lifecycle_spec.rb | awk -F':' '{print "break ", $1}' | pbcopy
         # rspec spec/demo/features/flows/game_play_lifecycle_spec.rb
         binding.pry
-        # TODO page fragment
         # TODO make font bigger on the login page
-        # TODO auto size the borwser to the right size
         visit("http://localhost:4011/admin")
-        fill_in "Email", with: @user.email
-        fill_in "Password", with: @user.password
+        fill_in "Email", with: @user.email # BREAK
+        fill_in "Password", with: @user.password # BREAK
         click_on "Sign in" # BREAK
+
+        # live code to this
+        # focus_on(:admin, :sign_in).sign_in(email: @user.email, password: @user.password)
       end
 
-      Then "He is in the admin dashboard" do # BREAK
-        # TODO why pleas sign in to continue?
-        # TODO page fragment
+      Then "He is in the admin dashboard" do
         wait_for { page.find(".flash ").text }.to eq "Please sign in to continue."
+
+        # live code to this
+        # wait_for { focus_on(:admin, :sign_in).flash_messages }.to eq "Please sign in to continue."
       end
 
-      When "He goes to create some new terms" do
+      When "He goes to create some new terms" do # BREAK
         click_on "Terms"
         click_on "New term"
         fill_in "Phrase", with: "Caroline Wozniacki"
