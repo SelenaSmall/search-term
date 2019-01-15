@@ -48,7 +48,12 @@ Capybara.app_host = "http://localhost:4010" # mimics Procfile.test for the momen
 Capybara.register_driver :selenium_chrome do |app|
   Capybara::Selenium::Driver.new(
       app,
-      browser: :chrome
+      browser: :chrome,
+      desired_capabilities: {
+          chromeOptions: {
+              args: ['window-size=800,960']
+          }
+      }
   )
 end
 Capybara.javascript_driver = :selenium_chrome
