@@ -87,24 +87,24 @@ it('calls api and handles an error', () => {
 });
 
 describe('status', () => {
-  it.skip('is set to LOADING ... by default', () => {
-    const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
-    expect(wrapper.find(Header).at(0).prop('status')).toBe('LOADING ...');
-  });
+  // it('is set to LOADING ... by default', () => {
+  //   const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
+  //   expect(wrapper.find(Header).at(0).prop('status')).toBe('LOADING ...');
+  // });
 
-  it.skip('is set to IN-PROGRESS once the API call comes back', () => {
-    expect.assertions(2);
-
-    const roundDataPromise = Promise.resolve({ term: 'bjorn borg' });
-    API.fetchRoundData = () => roundDataPromise;
-
-    const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
-
-    expect(wrapper.find(Header).at(0).prop('status')).toBe('LOADING ...');
-    roundDataPromise.then(() => {
-      expect(wrapper.find(Header).at(0).prop('status')).toBe('IN-PROGRESS');
-    });
-  });
+  // it('is set to IN-PROGRESS once the API call comes back', () => {
+  //   expect.assertions(2);
+  //
+  //   const roundDataPromise = Promise.resolve({ term: 'bjorn borg' });
+  //   API.fetchRoundData = () => roundDataPromise;
+  //
+  //   const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
+  //
+  //   expect(wrapper.find(Header).at(0).prop('status')).toBe('LOADING ...');
+  //   roundDataPromise.then(() => {
+  //     expect(wrapper.find(Header).at(0).prop('status')).toBe('IN-PROGRESS');
+  //   });
+  // });
 
   it.skip('is set to ERROR if the API call fails', () => {
     expect.assertions(2);

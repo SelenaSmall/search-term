@@ -17,7 +17,7 @@ feature 'Round Status', js: true do
       When 'user on a round sees loading' do
         with_api_route_paused do
           visit('/game/1/round/1')
-          # binding.pry
+          binding.pry
           wait_for { focus_on(:status).status }.to eq('LOADING ...')
         end
       end
@@ -30,7 +30,6 @@ feature 'Round Status', js: true do
     scenario 'John starts a round and data is loaded' do
       When 'user on a round and the round loads' do
         visit('/game/1/round/1')
-        # binding.pry
       end
 
       Then 'status is loading' do
@@ -58,12 +57,10 @@ feature 'Round Status', js: true do
     scenario "John gets the right answer and status is WINNER" do
       When 'user on a round and the round loads' do
         visit('/game/1/round/1')
-        # binding.pry
       end
 
       And "submits the correct answer within the time limit" do
         focus_on(:game).select_guess_choice('test')
-        # binding.pry
       end
 
       Then 'status is winner' do
@@ -87,7 +84,6 @@ feature 'Round Status', js: true do
     scenario "John waits too long and status is TIME-UP" do
       When 'user on a round and the round loads' do
         visit('/game/1/round/1')
-        # binding.pry
       end
 
       Then 'status is time-up' do
@@ -100,7 +96,6 @@ feature 'Round Status', js: true do
     scenario 'John tries to start a round and is informed there is an error' do
       When 'user on a round and the round loads' do
         visit('/game/1/round/1')
-        # binding.pry
       end
 
       Then 'status is loading' do
