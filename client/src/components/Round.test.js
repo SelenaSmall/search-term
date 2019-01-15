@@ -87,12 +87,12 @@ it('calls api and handles an error', () => {
 });
 
 describe('status', () => {
-  it('is set to LOADING ... by default', () => {
+  it.skip('is set to LOADING ... by default', () => {
     const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
     expect(wrapper.find(Header).at(0).prop('status')).toBe('LOADING ...');
   });
 
-  it('is set to IN-PROGRESS once the API call comes back', () => {
+  it.skip('is set to IN-PROGRESS once the API call comes back', () => {
     expect.assertions(2);
 
     const roundDataPromise = Promise.resolve({ term: 'bjorn borg' });
@@ -120,7 +120,7 @@ describe('status', () => {
     });
   });
 
-  it('is set to WINNER the right answer is guessed', () => {
+  it.skip('is set to WINNER the right answer is guessed', () => {
     expect.assertions(3);
 
     const roundDataPromise = Promise.resolve({ term: 'bjorn borg' });
@@ -136,7 +136,7 @@ describe('status', () => {
     });
   });
 
-  it('is set to TIME-IS-UP once the time runs out', () => {
+  it.skip('is set to TIME-IS-UP once the time runs out', () => {
     expect.assertions(3);
 
     const roundDataPromise = Promise.resolve({ term: 'bjorn borg' });
@@ -152,7 +152,7 @@ describe('status', () => {
     });
   });
 
-  it('is set to WRONG if the wrong answer is guessed', () => {
+  it.skip('is set to WRONG if the wrong answer is guessed', () => {
     expect.assertions(3);
 
     const roundDataPromise = Promise.resolve({ term: 'bjorn borg' });

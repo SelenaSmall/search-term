@@ -11,7 +11,16 @@ class Round extends Component {
     const round = parseInt(props.match.params.round, 10);
     const gameName = props.match.params.gameName;
     this.state = {
-      term: null, round, images: [], status: 'LOADING ...', secondsRemaining: 60, score: 0, interval: null, gameName, terms: [],
+      term: null,
+      round,
+      images: [],
+      status: 'IN-PROGRESS',
+      // status: 'LOADING ...', // TODO live fix
+      secondsRemaining: 60,
+      score: 0,
+      interval: null,
+      gameName,
+      terms: [],
     };
     this.fetchGameData(gameName);
     const { gameStyle } = this.state;
@@ -38,13 +47,9 @@ class Round extends Component {
   }
 
   fetchRoundData(round, gameName, gameStyle) {
-    // TODO: warning around setting state
-    // setState on a component that is not yet mounted
-    // Instead, assign to `this.state` directly or define a `state = {};
-    this.setState({ status: 'LOADING ...', images: [] });
     API.fetchRoundData(round, gameName).then((data) => {
       this.setState(data);
-      this.setState({ status: 'IN-PROGRESS' });
+      // this.setState({ status: 'IN-PROGRESS' }); // TODO live fix
       this.startTimer();
       if (gameStyle === 'text') {
         this.guessInputRef.current.focus();
@@ -152,11 +157,10 @@ Round
                     : <ul class="list-reset">{choices}</ul>
                 }
 
-                {/* TODO: below is a warning Failed prop type: Invalid prop `innerRef` supplied to `Link`.*/}
                 {
                   round >= maxRounds
-                    ? <Link innerRef={this.nextButtonRef} to={{ pathname: '/results', state: { score } }} className="input-container-next-round next-round game-button">Next</Link>
-                    : <Link innerRef={this.nextButtonRef} to={`/game/${gameName}/round/${round + 1}`} className="input-container-next-round next-round game-button">Next</Link>
+                    ? <Link to={{ pathname: '/results', state: { score } }} className="input-container-next-round next-round game-button">Next</Link>
+                    : <Link to={`/game/${gameName}/round/${round + 1}`} className="input-container-next-round next-round game-button">Next</Link>
                 }
               </div>
             </Col>

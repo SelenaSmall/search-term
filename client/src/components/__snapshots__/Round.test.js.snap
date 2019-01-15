@@ -7,7 +7,7 @@ exports[`calls api and handles an error 1`] = `
   <Component
     score={0}
     secondsRemaining={60}
-    status="LOADING ..."
+    status="IN-PROGRESS"
   />
   <section
     id="middle-region"
@@ -41,11 +41,7 @@ exports[`calls api and handles an error 1`] = `
       >
         <div
           className="images-container"
-        >
-          <div
-            className="background"
-          />
-        </div>
+        />
       </Col>
       <Col
         sm="6"
@@ -71,11 +67,6 @@ exports[`calls api and handles an error 1`] = `
           />
           <Link
             className="input-container-next-round next-round game-button"
-            innerRef={
-              Object {
-                "current": null,
-              }
-            }
             replace={false}
             to="/game/undefined/round/2"
           >
@@ -155,11 +146,6 @@ exports[`calls api and handles an error 2`] = `
           />
           <Link
             className="input-container-next-round next-round game-button"
-            innerRef={
-              Object {
-                "current": null,
-              }
-            }
             replace={false}
             to={
               Object {
@@ -269,11 +255,6 @@ exports[`calls api to get all images on construction 1`] = `
           />
           <Link
             className="input-container-next-round next-round game-button"
-            innerRef={
-              Object {
-                "current": null,
-              }
-            }
             replace={false}
             to={
               Object {
@@ -300,7 +281,7 @@ exports[`snapshot testing 1`] = `
   <Component
     score={0}
     secondsRemaining={60}
-    status="LOADING ..."
+    status="IN-PROGRESS"
   />
   <section
     id="middle-region"
@@ -334,11 +315,7 @@ exports[`snapshot testing 1`] = `
       >
         <div
           className="images-container"
-        >
-          <div
-            className="background"
-          />
-        </div>
+        />
       </Col>
       <Col
         sm="6"
@@ -364,11 +341,6 @@ exports[`snapshot testing 1`] = `
           />
           <Link
             className="input-container-next-round next-round game-button"
-            innerRef={
-              Object {
-                "current": null,
-              }
-            }
             replace={false}
             to="/game/undefined/round/2"
           >
