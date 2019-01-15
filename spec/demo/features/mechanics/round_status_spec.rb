@@ -3,7 +3,13 @@ require 'rails_helper'
 feature 'Round Status', js: true do
   context 'game is setup with the minimum 1 term' do
     before do
-      game = Game.create(id: 1, title: "Oz Open", rounds: 1, game_style: :multi_choice)
+      game = Game.create(
+          id:                1,
+          title:             "Oz Open",
+          rounds:            1,
+          game_style:        :multi_choice,
+          seconds_per_round: 60
+      )
       game.terms << Term.create(phrase: 'test')
     end
 
@@ -34,7 +40,7 @@ feature 'Round Status', js: true do
 
     # context "with forced API errors" do
     #   after(:each) do
-    #     ForceApiError.clear
+    #     ForceApiError.clear # not working - this is still set?
     #   end
     #
     #   scenario "the API errors" do
@@ -68,7 +74,13 @@ feature 'Round Status', js: true do
 
   context "game is really short" do
     before do
-      game = Game.create(id: 1, title: "Oz Open", rounds: 1, game_style: :multi_choice,   seconds_per_round: 1)
+      game = Game.create(
+          id:                1,
+          title:             "Oz Open",
+          rounds:            1,
+          game_style:        :multi_choice,
+          seconds_per_round: 1
+      )
       game.terms << Term.create(phrase: 'test')
     end
 
