@@ -1,209 +1,225 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`basic rendering 1`] = `
-<section
-  id="top-region"
+<div
+  class="hidden"
 >
-  <menu
-    className="status-menu"
+  <section
+    id="top-region"
   >
-    <ul>
-      <li
-        className="status-menu-item status"
-      >
-        <span
-          className="status-menu-item-label"
+    <menu
+      className="status-menu"
+    >
+      <ul>
+        <li
+          className="status-menu-item status"
         >
-          Status
-        </span>
-        <span
-          className="status-menu-item-value"
-        />
-      </li>
-      <li
-        className="status-menu-item score"
-      >
-        <span
-          className="status-menu-item-label"
+          <span
+            className="status-menu-item-label"
+          >
+            Status
+          </span>
+          <span
+            className="status-menu-item-value"
+          />
+        </li>
+        <li
+          className="status-menu-item score"
         >
-          Score
-        </span>
-        <span
-          className="status-menu-item-value"
-        />
-      </li>
-      <li
-        className="status-menu-item timer"
-      >
-        <span
-          className="status-menu-item-label"
+          <span
+            className="status-menu-item-label"
+          >
+            Score
+          </span>
+          <span
+            className="status-menu-item-value"
+          />
+        </li>
+        <li
+          className="status-menu-item timer"
         >
-          Time
-        </span>
-        <span
-          className="status-menu-item-value"
-        />
-      </li>
-    </ul>
-  </menu>
-</section>
+          <span
+            className="status-menu-item-label"
+          >
+            Time
+          </span>
+          <span
+            className="status-menu-item-value"
+          />
+        </li>
+      </ul>
+    </menu>
+  </section>
+</div>
 `;
 
 exports[`renders status, score and time remaining 1`] = `
-<section
-  id="top-region"
+<div
+  class="hidden"
 >
-  <menu
-    className="status-menu"
+  <section
+    id="top-region"
   >
-    <ul>
-      <li
-        className="status-menu-item status"
-      >
-        <span
-          className="status-menu-item-label"
+    <menu
+      className="status-menu"
+    >
+      <ul>
+        <li
+          className="status-menu-item status"
         >
-          Status
-        </span>
-        <span
-          className="status-menu-item-value"
+          <span
+            className="status-menu-item-label"
+          >
+            Status
+          </span>
+          <span
+            className="status-menu-item-value"
+          >
+            the status
+          </span>
+        </li>
+        <li
+          className="status-menu-item score"
         >
-          the status
-        </span>
-      </li>
-      <li
-        className="status-menu-item score"
-      >
-        <span
-          className="status-menu-item-label"
+          <span
+            className="status-menu-item-label"
+          >
+            Score
+          </span>
+          <span
+            className="status-menu-item-value"
+          />
+        </li>
+        <li
+          className="status-menu-item timer"
         >
-          Score
-        </span>
-        <span
-          className="status-menu-item-value"
-        />
-      </li>
-      <li
-        className="status-menu-item timer"
-      >
-        <span
-          className="status-menu-item-label"
-        >
-          Time
-        </span>
-        <span
-          className="status-menu-item-value"
-        />
-      </li>
-    </ul>
-  </menu>
-</section>
+          <span
+            className="status-menu-item-label"
+          >
+            Time
+          </span>
+          <span
+            className="status-menu-item-value"
+          />
+        </li>
+      </ul>
+    </menu>
+  </section>
+</div>
 `;
 
 exports[`renders status, score and time remaining 2`] = `
-<section
-  id="top-region"
+<div
+  class="hidden"
 >
-  <menu
-    className="status-menu"
+  <section
+    id="top-region"
   >
-    <ul>
-      <li
-        className="status-menu-item status"
-      >
-        <span
-          className="status-menu-item-label"
+    <menu
+      className="status-menu"
+    >
+      <ul>
+        <li
+          className="status-menu-item status"
         >
-          Status
-        </span>
-        <span
-          className="status-menu-item-value"
+          <span
+            className="status-menu-item-label"
+          >
+            Status
+          </span>
+          <span
+            className="status-menu-item-value"
+          >
+            the status
+          </span>
+        </li>
+        <li
+          className="status-menu-item score"
         >
-          the status
-        </span>
-      </li>
-      <li
-        className="status-menu-item score"
-      >
-        <span
-          className="status-menu-item-label"
+          <span
+            className="status-menu-item-label"
+          >
+            Score
+          </span>
+          <span
+            className="status-menu-item-value"
+          >
+            101
+          </span>
+        </li>
+        <li
+          className="status-menu-item timer"
         >
-          Score
-        </span>
-        <span
-          className="status-menu-item-value"
-        >
-          101
-        </span>
-      </li>
-      <li
-        className="status-menu-item timer"
-      >
-        <span
-          className="status-menu-item-label"
-        >
-          Time
-        </span>
-        <span
-          className="status-menu-item-value"
-        />
-      </li>
-    </ul>
-  </menu>
-</section>
+          <span
+            className="status-menu-item-label"
+          >
+            Time
+          </span>
+          <span
+            className="status-menu-item-value"
+          />
+        </li>
+      </ul>
+    </menu>
+  </section>
+</div>
 `;
 
 exports[`renders status, score and time remaining 3`] = `
-<section
-  id="top-region"
+<div
+  class="hidden"
 >
-  <menu
-    className="status-menu"
+  <section
+    id="top-region"
   >
-    <ul>
-      <li
-        className="status-menu-item status"
-      >
-        <span
-          className="status-menu-item-label"
+    <menu
+      className="status-menu"
+    >
+      <ul>
+        <li
+          className="status-menu-item status"
         >
-          Status
-        </span>
-        <span
-          className="status-menu-item-value"
+          <span
+            className="status-menu-item-label"
+          >
+            Status
+          </span>
+          <span
+            className="status-menu-item-value"
+          >
+            the status
+          </span>
+        </li>
+        <li
+          className="status-menu-item score"
         >
-          the status
-        </span>
-      </li>
-      <li
-        className="status-menu-item score"
-      >
-        <span
-          className="status-menu-item-label"
+          <span
+            className="status-menu-item-label"
+          >
+            Score
+          </span>
+          <span
+            className="status-menu-item-value"
+          >
+            101
+          </span>
+        </li>
+        <li
+          className="status-menu-item timer"
         >
-          Score
-        </span>
-        <span
-          className="status-menu-item-value"
-        >
-          101
-        </span>
-      </li>
-      <li
-        className="status-menu-item timer"
-      >
-        <span
-          className="status-menu-item-label"
-        >
-          Time
-        </span>
-        <span
-          className="status-menu-item-value"
-        >
-          56
-        </span>
-      </li>
-    </ul>
-  </menu>
-</section>
+          <span
+            className="status-menu-item-label"
+          >
+            Time
+          </span>
+          <span
+            className="status-menu-item-value"
+          >
+            56
+          </span>
+        </li>
+      </ul>
+    </menu>
+  </section>
+</div>
 `;
