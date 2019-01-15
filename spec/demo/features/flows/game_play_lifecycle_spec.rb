@@ -8,7 +8,6 @@ feature 'Game play lifecycle', js: true do
   """ do
 
     before do
-      # @1password = ''
       @user = User.create(
           email:    "saramic@gmail.com",
           role:     "admin",
@@ -32,7 +31,7 @@ feature 'Game play lifecycle', js: true do
         visit("http://localhost:4011/admin")
         fill_in "Email", with: @user.email
         fill_in "Password", with: @user.password
-        click_on "Sign in" # break
+        click_on "Sign in" # BREAK
       end
 
       Then "He is in the admin dashboard" do # BREAK
