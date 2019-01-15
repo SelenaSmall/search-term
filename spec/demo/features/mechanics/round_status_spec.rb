@@ -68,7 +68,7 @@ feature 'Round Status', js: true do
 
   context "game is really short" do
     before do
-      game = Game.create(id: 1, title: "Oz Open", rounds: 1, game_style: :multi_choice)#, seconds_per_round: 1)
+      game = Game.create(id: 1, title: "Oz Open", rounds: 1, game_style: :multi_choice,   seconds_per_round: 1)
       game.terms << Term.create(phrase: 'test')
     end
 

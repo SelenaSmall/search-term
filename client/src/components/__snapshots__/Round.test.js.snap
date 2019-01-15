@@ -6,7 +6,7 @@ exports[`calls api and handles an error 1`] = `
 >
   <Component
     score={0}
-    secondsRemaining={60}
+    secondsRemaining={0}
     status="LOADING ..."
   />
   <section
@@ -89,7 +89,6 @@ exports[`calls api and handles an error 2`] = `
 >
   <Component
     score={0}
-    secondsRemaining={60}
     status="ERROR"
   />
   <section
@@ -175,7 +174,6 @@ exports[`calls api to get all images on construction 1`] = `
 >
   <Component
     score={0}
-    secondsRemaining={60}
     status="IN-PROGRESS"
   />
   <section
@@ -284,7 +282,7 @@ exports[`snapshot testing 1`] = `
 >
   <Component
     score={0}
-    secondsRemaining={60}
+    secondsRemaining={0}
     status="LOADING ..."
   />
   <section

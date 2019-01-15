@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_07_092454) do
+ActiveRecord::Schema.define(version: 2019_01_15_174113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_01_07_092454) do
     t.integer "state", default: 0
     t.string "featured_image_url"
     t.integer "game_style", default: 0
+    t.integer "seconds_per_round", default: 10
     t.index ["title"], name: "index_games_on_title", unique: true
   end
 

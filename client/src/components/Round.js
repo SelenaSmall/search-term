@@ -16,7 +16,7 @@ class Round extends Component {
       images: [],
       // status: 'IN-PROGRESS',
       status: 'LOADING ...', // TODO live fix
-      secondsRemaining: 60,
+      secondsRemaining: 0,
       score: 0,
       interval: null,
       gameName,
@@ -61,7 +61,7 @@ class Round extends Component {
 
   fetchGameData(gameId) {
     API.fetchGameData(gameId).then((data) => {
-      this.setState({ maxRounds: data.rounds, gameStyle: data.game_style });
+      this.setState({ maxRounds: data.rounds, gameStyle: data.game_style, secondsRemaining: data.seconds_per_round });
     });
   }
 
