@@ -6,6 +6,8 @@ import './game.css';
 import Header from './Header';
 
 class Round extends Component {
+  _isMounted = false;
+
   constructor(props) {
     super(props);
     const round = parseInt(props.match.params.round, 10);
@@ -35,6 +37,11 @@ class Round extends Component {
 
   componentDidMount() {
     // this.guessInputRef.current.focus(); // TODO breaks tests
+    this._isMounted = true
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   componentWillReceiveProps(props) {
@@ -47,6 +54,9 @@ class Round extends Component {
   }
 
   fetchRoundData(round, gameName, gameStyle) {
+    if(this._isMounted) {
+      this.setState({ status: 'LOADING ...' });
+    }
     API.fetchRoundData(round, gameName).then((data) => {
       this.setState(data);
       this.setState({ status: 'IN-PROGRESS' }); // TODO live fix
