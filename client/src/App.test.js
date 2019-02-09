@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Enzyme, { shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import Adapter from 'enzyme-adapter-react-16';
 import App from './App';
-
-Enzyme.configure({ adapter: new Adapter() });
 
 // TODO: crashes whole test suite - Error: Network Error
 // it('renders without crashing', () => {

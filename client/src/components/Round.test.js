@@ -1,14 +1,11 @@
 import React from 'react';
-import Enzyme, { shallow, mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import { BrowserRouter } from 'react-router-dom';
 
-import Adapter from 'enzyme-adapter-react-16';
 import Round from './Round';
 import API from '../API';
 import Header from './Header';
-
-Enzyme.configure({ adapter: new Adapter() });
 
 it('snapshot testing', () => {
   API.fetchRoundData = () => Promise.resolve();
