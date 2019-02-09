@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
 import { BrowserRouter } from 'react-router-dom';
 
 import Round from './Round';
@@ -12,7 +11,7 @@ it('snapshot testing', () => {
   API.fetchGameData = () => Promise.resolve({ rounds: 1 });
 
   const output = shallow(<Round match={{ params: { round: 1 } }} />);
-  expect(shallowToJson(output)).toMatchSnapshot();
+  expect(output).toMatchSnapshot();
 });
 
 it('calls api to get all images on construction', () => {
@@ -36,7 +35,7 @@ it('calls api to get all images on construction', () => {
 
   const output = shallow(<Round match={{ params: { round: 1 } }} />);
   roundDataPromise.then(() => {
-    expect(shallowToJson(output)).toMatchSnapshot();
+    expect(output).toMatchSnapshot();
   });
   expect(fetchRoundDataCalls).toEqual([1]);
 });
@@ -75,12 +74,13 @@ it('calls api and handles an error', () => {
   API.fetchGameData = () => Promise.resolve({ rounds: 1 });
 
   const output = shallow(<Round match={{ params: { round: 1 } }} />);
-  expect(shallowToJson(output)).toMatchSnapshot();
-  roundDataPromise.then(() => {
-  }).catch(() => {
-    expect(fetchRoundDataCalls).toEqual([1]);
-    expect(shallowToJson(output)).toMatchSnapshot();
-  });
+  expect(output).toMatchSnapshot();
+  roundDataPromise
+    .then(() => {})
+    .catch(() => {
+      expect(fetchRoundDataCalls).toEqual([1]);
+      expect(output).toMatchSnapshot();
+    });
 });
 
 describe('status', () => {

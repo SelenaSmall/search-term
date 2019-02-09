@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
 import { MemoryRouter } from 'react-router-dom';
 
 import Game from './Game';
@@ -19,5 +18,5 @@ it('needs atleast 1 test', () => {
 // TODO: crashes whole test suite - Error: Network Error
 // it('snapshot testing', () => {
 //   const output = shallow(<Game />);
-//   expect(shallowToJson(output)).toMatchSnapshot();
+//   expect(output).toMatchSnapshot();
 // });

@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
 
 import App from './App';
 
@@ -14,5 +13,5 @@ import App from './App';
 
 it('snapshot testing', () => {
   const output = shallow(<App />);
-  expect(shallowToJson(output)).toMatchSnapshot();
+  expect(output).toMatchSnapshot();
 });
