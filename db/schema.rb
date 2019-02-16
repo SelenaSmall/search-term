@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_15_174113) do
+ActiveRecord::Schema.define(version: 2019_02_16_021030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -35,6 +35,20 @@ ActiveRecord::Schema.define(version: 2019_01_15_174113) do
     t.index ["term_id"], name: "index_games_terms_on_term_id"
   end
 
+  create_table "matches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plays", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "text"
+    t.uuid "match_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_plays_on_match_id"
+  end
+
   create_table "terms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "phrase"
     t.datetime "created_at", null: false
@@ -55,4 +69,5 @@ ActiveRecord::Schema.define(version: 2019_01_15_174113) do
 
   add_foreign_key "games_terms", "games"
   add_foreign_key "games_terms", "terms"
+  add_foreign_key "plays", "matches"
 end
