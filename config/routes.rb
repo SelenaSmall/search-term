@@ -13,4 +13,9 @@ Rails.application.routes.draw do
       resources :games, only: [:index, :show]
     end
   end
+
+  # action cable for matches with plays
+  resources :matches, only: [:index, :create]
+  resources :plays, only: [:create]
+  mount ActionCable.server => '/cable'
 end
