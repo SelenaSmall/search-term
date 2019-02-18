@@ -85,7 +85,6 @@ class Round extends Component {
     if (secondsRemaining <= 0) {
       this.timeIsUp();
     } else {
-      (secondsRemaining);
       this.setState({ secondsRemaining: secondsRemaining - 1 })
     }
   }
