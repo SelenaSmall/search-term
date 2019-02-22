@@ -67,6 +67,10 @@ group :development, :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'rspec-wait'
+
+  # needed for clearance
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
 end
 
 group :development do
