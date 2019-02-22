@@ -123,6 +123,11 @@ feature 'Game play lifecycle', js: true do
         focus_on(:game).next_round
       end
 
+      # FLAKEY
+      #      Failure/Error: wait_for { focus_on(:status).status }.to eq('IN-PROGRESS')
+      #
+      #        expected: "IN-PROGRESS"
+      #             got: "LOADING ..."
       Then 'round two starts' do
         wait_for { focus_on(:status).round }.to eq('2')
         wait_for { focus_on(:status).status }.to eq('IN-PROGRESS')
