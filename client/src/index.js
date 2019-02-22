@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+import { ActionCableProvider } from 'react-actioncable-provider';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <ActionCableProvider url="ws://localhost:4001/cable">
+    <App />
+  </ActionCableProvider>, document.getElementById('root'));
 registerServiceWorker();

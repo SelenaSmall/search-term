@@ -3,8 +3,8 @@
 exports[`snapshot testing 1`] = `
 <div>
   <BrowserRouter>
-    <Component />
+    <_default />
   </BrowserRouter>
-  <Component />
+  <_default />
 </div>
 `;

@@ -4,7 +4,7 @@ exports[`calls api and handles an error 1`] = `
 <div
   className="flex flex-column"
 >
-  <Component
+  <_default
     score={0}
     secondsRemaining={0}
     status="LOADING ..."
@@ -87,7 +87,7 @@ exports[`calls api and handles an error 2`] = `
 <div
   className="flex flex-column"
 >
-  <Component
+  <_default
     score={0}
     status="ERROR"
   />
@@ -172,7 +172,7 @@ exports[`calls api to get all images on construction 1`] = `
 <div
   className="flex flex-column"
 >
-  <Component
+  <_default
     score={0}
     status="IN-PROGRESS"
   />
@@ -280,7 +280,7 @@ exports[`snapshot testing 1`] = `
 <div
   className="flex flex-column"
 >
-  <Component
+  <_default
     score={0}
     secondsRemaining={0}
     status="LOADING ..."
