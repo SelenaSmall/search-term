@@ -11,7 +11,9 @@ class Round extends Component {
   constructor(props) {
     super(props);
     const round = parseInt(props.match.params.round, 10);
-    const gameName = props.match.params.gameName;
+    const {
+      params: { gameName },
+    } = props.match;
     this.state = {
       term: null,
       round,
@@ -37,7 +39,7 @@ class Round extends Component {
 
   componentDidMount() {
     // this.guessInputRef.current.focus(); // TODO breaks tests
-    this._isMounted = true
+    this._isMounted = true;
   }
 
   componentWillUnmount() {
@@ -48,30 +50,43 @@ class Round extends Component {
     const { interval } = this.state;
     clearInterval(interval);
     const round = parseInt(props.match.params.round, 10);
-    const gameName = props.match.params.gameName;
-    this.setState({ round, secondsRemaining: 60, guess: '', gameName });
+    const {
+      params: { gameName },
+    } = props.match;
+    this.setState({
+      round,
+      secondsRemaining: 60,
+      guess: '',
+      gameName,
+    });
     this.fetchRoundData(round, gameName);
   }
 
   fetchRoundData(round, gameName, gameStyle) {
-    if(this._isMounted) {
+    if (this._isMounted) {
       this.setState({ status: 'LOADING ...' }); // TODO live fix
     }
-    API.fetchRoundData(round, gameName).then((data) => {
-      this.setState(data);
-      this.setState({ status: 'IN-PROGRESS' }); // TODO live fix
-      this.startTimer();
-      if (gameStyle === 'text') {
-        this.guessInputRef.current.focus();
-      }
-    }).catch(() => {
-      this.setState({ status: 'ERROR' });
-    });
+    API.fetchRoundData(round, gameName)
+      .then((data) => {
+        this.setState(data);
+        this.setState({ status: 'IN-PROGRESS' }); // TODO live fix
+        this.startTimer();
+        if (gameStyle === 'text') {
+          this.guessInputRef.current.focus();
+        }
+      })
+      .catch(() => {
+        this.setState({ status: 'ERROR' });
+      });
   }
 
   fetchGameData(gameId) {
     API.fetchGameData(gameId).then((data) => {
-      this.setState({ maxRounds: data.rounds, gameStyle: data.game_style, secondsRemaining: data.seconds_per_round });
+      this.setState({
+        maxRounds: data.rounds,
+        gameStyle: data.game_style,
+        secondsRemaining: data.seconds_per_round,
+      });
     });
   }
 
@@ -85,7 +100,7 @@ class Round extends Component {
     if (secondsRemaining <= 0) {
       this.timeIsUp();
     } else {
-      this.setState({ secondsRemaining: secondsRemaining - 1 })
+      this.setState({ secondsRemaining: secondsRemaining - 1 });
     }
   }
 
@@ -119,58 +134,92 @@ class Round extends Component {
 
   render() {
     const {
-      status, score, secondsRemaining, round, maxRounds, images, guess, gameName, gameStyle, terms,
+      status,
+      score,
+      secondsRemaining,
+      round,
+      maxRounds,
+      images,
+      guess,
+      gameName,
+      gameStyle,
+      terms,
     } = this.state;
 
-    const choices = terms.map( term => <li><button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded min-w-full mb-1" onClick={this.handleGuess} value={term} key={term}>{term}</button></li> );
+    const choices = terms.map(term => (
+      <li>
+        <button
+          className="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded min-w-full mb-1"
+          onClick={this.handleGuess}
+          value={term}
+          key={term}
+          type="button"
+        >
+          {term}
+        </button>
+      </li>
+    ));
 
     return (
       <div className="flex flex-column">
-        <Header
-          status={status}
-          score={score}
-          secondsRemaining={secondsRemaining}
-        />
+        <Header status={status} score={score} secondsRemaining={secondsRemaining} />
 
         <section id="middle-region">
           <h1 className="text-center">
-Round
+            Round
             <span className="round">{round}</span>
           </h1>
 
           <Row className="main-container-row">
             <Col sm="6">
               <div className="images-container">
-                { status === 'LOADING ...'
-                  ? <div className="background" />
-                  : images.map(({ id, src }) => (
+                {status === 'LOADING ...' ? (
+                  <div className="background" />
+                ) : (
+                  images.map(({ id, src }) => (
                     <div className="images-container-single" key={id}>
-                      <img className="images-container-single-image" key={id} src={src} alt="nice try" />
+                      <img
+                        className="images-container-single-image"
+                        key={id}
+                        src={src}
+                        alt="nice try"
+                      />
                     </div>
-                  ))}
+                  ))
+                )}
               </div>
             </Col>
 
             <Col sm="6">
               <div className="input-container">
                 <h5>Guess the search term</h5>
-                {
-                  gameStyle === 'text'
-                    ? <textarea
-                        ref={this.guessInputRef}
-                        className="input-container-guess"
-                        onChange={this.handleGuess}
-                        value={guess}
-                        disabled={status === 'WINNER'}
-                      />
-                    : <ul class="list-reset">{choices}</ul>
-                }
+                {gameStyle === 'text' ? (
+                  <textarea
+                    ref={this.guessInputRef}
+                    className="input-container-guess"
+                    onChange={this.handleGuess}
+                    value={guess}
+                    disabled={status === 'WINNER'}
+                  />
+                ) : (
+                  <ul className="list-reset">{choices}</ul>
+                )}
 
-                {
-                  round >= maxRounds
-                    ? <Link to={{ pathname: '/results', state: { score } }} className="input-container-next-round next-round game-button">Next</Link>
-                    : <Link to={`/game/${gameName}/round/${round + 1}`} className="input-container-next-round next-round game-button">Next</Link>
-                }
+                {round >= maxRounds ? (
+                  <Link
+                    to={{ pathname: '/results', state: { score } }}
+                    className="input-container-next-round next-round game-button"
+                  >
+                    Next
+                  </Link>
+                ) : (
+                  <Link
+                    to={`/game/${gameName}/round/${round + 1}`}
+                    className="input-container-next-round next-round game-button"
+                  >
+                    Next
+                  </Link>
+                )}
               </div>
             </Col>
           </Row>

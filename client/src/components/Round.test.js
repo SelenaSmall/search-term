@@ -17,16 +17,11 @@ it('snapshot testing', () => {
 it('calls api to get all images on construction', () => {
   const fetchRoundDataCalls = [];
 
-  const roundDataPromise = Promise.resolve(
-    {
-      round: 1,
-      images: [
-        { src: 'image_1.jpg', id: 'abc-Xyz' },
-        { src: 'image_1.jpg', id: 'abc-Xyz' },
-      ],
-      term: 'search term',
-    },
-  );
+  const roundDataPromise = Promise.resolve({
+    round: 1,
+    images: [{ src: 'image_1.jpg', id: 'abc-Xyz' }, { src: 'image_1.jpg', id: 'abc-Xyz' }],
+    term: 'search term',
+  });
   API.fetchRoundData = (args) => {
     fetchRoundDataCalls.push(args);
     return roundDataPromise;
@@ -111,9 +106,19 @@ describe('status', () => {
 
     const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
 
-    expect(wrapper.find(Header).at(0).prop('status')).toBe('LOADING ...');
+    expect(
+      wrapper
+        .find(Header)
+        .at(0)
+        .prop('status'),
+    ).toBe('LOADING ...');
     roundDataPromise.catch(() => {
-      expect(wrapper.find(Header).at(0).prop('status')).toBe('ERROR');
+      expect(
+        wrapper
+          .find(Header)
+          .at(0)
+          .prop('status'),
+      ).toBe('ERROR');
     });
   });
 
@@ -125,11 +130,26 @@ describe('status', () => {
 
     const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
 
-    expect(wrapper.find(Header).at(0).prop('status')).toBe('LOADING ...');
+    expect(
+      wrapper
+        .find(Header)
+        .at(0)
+        .prop('status'),
+    ).toBe('LOADING ...');
     roundDataPromise.then(() => {
-      expect(wrapper.find(Header).at(0).prop('status')).toBe('IN-PROGRESS');
-      wrapper.instance().handleGuess({target: { value: 'bjorn borg'}});
-      expect(wrapper.find(Header).at(0).prop('status')).toBe('WINNER');
+      expect(
+        wrapper
+          .find(Header)
+          .at(0)
+          .prop('status'),
+      ).toBe('IN-PROGRESS');
+      wrapper.instance().handleGuess({ target: { value: 'bjorn borg' } });
+      expect(
+        wrapper
+          .find(Header)
+          .at(0)
+          .prop('status'),
+      ).toBe('WINNER');
     });
   });
 
@@ -141,11 +161,26 @@ describe('status', () => {
 
     const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
 
-    expect(wrapper.find(Header).at(0).prop('status')).toBe('LOADING ...');
+    expect(
+      wrapper
+        .find(Header)
+        .at(0)
+        .prop('status'),
+    ).toBe('LOADING ...');
     roundDataPromise.then(() => {
-      expect(wrapper.find(Header).at(0).prop('status')).toBe('IN-PROGRESS');
+      expect(
+        wrapper
+          .find(Header)
+          .at(0)
+          .prop('status'),
+      ).toBe('IN-PROGRESS');
       wrapper.instance().timeIsUp();
-      expect(wrapper.find(Header).at(0).prop('status')).toBe('TIME-IS-UP');
+      expect(
+        wrapper
+          .find(Header)
+          .at(0)
+          .prop('status'),
+      ).toBe('TIME-IS-UP');
     });
   });
 
@@ -157,11 +192,26 @@ describe('status', () => {
 
     const wrapper = shallow(<Round match={{ params: { round: 1 } }} />);
 
-    expect(wrapper.find(Header).at(0).prop('status')).toBe('LOADING ...');
+    expect(
+      wrapper
+        .find(Header)
+        .at(0)
+        .prop('status'),
+    ).toBe('LOADING ...');
     roundDataPromise.then(() => {
-      expect(wrapper.find(Header).at(0).prop('status')).toBe('IN-PROGRESS');
-      wrapper.instance().handleGuess({target: { value: 'martina navratilova'}});
-      expect(wrapper.find(Header).at(0).prop('status')).toBe('WRONG');
+      expect(
+        wrapper
+          .find(Header)
+          .at(0)
+          .prop('status'),
+      ).toBe('IN-PROGRESS');
+      wrapper.instance().handleGuess({ target: { value: 'martina navratilova' } });
+      expect(
+        wrapper
+          .find(Header)
+          .at(0)
+          .prop('status'),
+      ).toBe('WRONG');
     });
   });
 });

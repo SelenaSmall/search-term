@@ -67,7 +67,7 @@ exports[`calls api and handles an error 1`] = `
             Guess the search term
           </h5>
           <ul
-            class="list-reset"
+            className="list-reset"
           />
           <Link
             className="input-container-next-round next-round game-button"
@@ -145,7 +145,7 @@ exports[`calls api and handles an error 2`] = `
             Guess the search term
           </h5>
           <ul
-            class="list-reset"
+            className="list-reset"
           />
           <Link
             className="input-container-next-round next-round game-button"
@@ -253,7 +253,7 @@ exports[`calls api to get all images on construction 1`] = `
             Guess the search term
           </h5>
           <ul
-            class="list-reset"
+            className="list-reset"
           />
           <Link
             className="input-container-next-round next-round game-button"
@@ -343,7 +343,7 @@ exports[`snapshot testing 1`] = `
             Guess the search term
           </h5>
           <ul
-            class="list-reset"
+            className="list-reset"
           />
           <Link
             className="input-container-next-round next-round game-button"
