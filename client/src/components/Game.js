@@ -37,11 +37,13 @@ class Game extends Component {
                           alt="Sunset in the mountains"
                         />
                         <div className="px-6 py-4">
-                          <div className="game-title font-bold text-xl mb-2">{game.title}</div>
+                          <div className="game-title font-bold text-xl mb-2">
+                            {game.title}
+                          </div>
                           <p className="text-grey-darker text-base">
                             <Link
                               key={game.id}
-                              to={`/game/${game.id}/round/1`}
+                              to={`/game/${game.id}/pre-round`}
                               className="game-button start-game-button"
                             >
                               Start Game

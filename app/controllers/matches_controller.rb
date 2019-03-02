@@ -1,4 +1,6 @@
 class MatchesController < ApplicationController
+  protect_from_forgery unless: -> { request.format.json? }
+
   def index
     matches = Match.all
     render json: matches
@@ -10,8 +12,9 @@ class MatchesController < ApplicationController
       serialized_data = ActiveModelSerializers::Adapter::Json.new(
           MatchSerializer.new(match)
       ).serializable_hash
-      ActionCable.server.broadcast 'matches_channel', serialized_data
-      head :ok
+      # ActionCable.server.broadcast 'matches_channel', serialized_data
+      # head :ok
+      render json: serialized_data
     end
   end
 
