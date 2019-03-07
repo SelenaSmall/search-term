@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_16_021030) do
+ActiveRecord::Schema.define(version: 2019_03_03_002440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 2019_02_16_021030) do
 
   create_table "matches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "matches_players", id: false, force: :cascade do |t|
+    t.uuid "match_id", null: false
+    t.uuid "player_id", null: false
+    t.index ["match_id", "player_id"], name: "index_matches_players_on_match_id_and_player_id", unique: true
+  end
+
+  create_table "players", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

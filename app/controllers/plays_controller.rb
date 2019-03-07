@@ -1,6 +1,6 @@
 class PlaysController < ApplicationController
+  protect_from_forgery unless: -> { request.format.json? }
   def create
-    Rails.logger.warn(params)
     play = Play.new(play_params)
     match = Match.find(play_params[:match_id])
     if play.save

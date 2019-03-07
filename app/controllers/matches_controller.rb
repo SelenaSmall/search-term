@@ -18,6 +18,23 @@ class MatchesController < ApplicationController
     end
   end
 
+  def join
+    match = Match.find(params.permit(:id)[:id])
+    player = Player.find(params[:player_id])
+    match.players << player unless match.players.exists?(player.id)
+    serialized_data = ActiveModelSerializers::Adapter::Json.new(
+      # TODO hack not even saving the play just creating it to serialize and it should really be a separate channel of players joining?
+      PlaySerializer.new(Play.new(match: match, text: "NEW PLAYER #{player.id}"))
+    ).serializable_hash
+    PlaysChannel.broadcast_to match, serialized_data
+    head :ok
+  end
+
+  def players
+    match = Match.find(params.permit(:id)[:id])
+    render json: match.players
+  end
+
   private
 
   def match_params

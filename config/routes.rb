@@ -15,7 +15,14 @@ Rails.application.routes.draw do
   end
 
   # action cable for matches with plays
-  resources :matches, only: [:index, :create]
+  resources :matches, only: [:index, :create, :join] do
+    put 'join', on: :member
+    get 'players', on: :member
+  end
   resources :plays, only: [:create]
+  resources :players, only: [:create] do
+    get :show, on: :member
+    post :first_or_create, on: :member
+  end
   mount ActionCable.server => '/cable'
 end
