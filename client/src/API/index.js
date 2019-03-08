@@ -24,6 +24,12 @@ const fetchOrCreatePlayer = async (id) => {
   return response.data;
 };
 
+const fetchMatchResults = async (id) => {
+  const url = process.env.REACT_APP_API_BASE_URL || '';
+  const response = await axios.get(`${url}/matches/${id}/results`);
+  return response.data;
+};
+
 export default {
   fetchRoundData,
   fetchGameData,
@@ -31,4 +37,5 @@ export default {
   newMatch,
   joinMatch,
   fetchOrCreatePlayer,
+  fetchMatchResults,
 };

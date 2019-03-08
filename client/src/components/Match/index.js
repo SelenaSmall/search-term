@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { ActionCableConsumer } from 'react-actioncable-provider';
+import { Link } from 'react-router-dom';
 import UserList from '../UserList';
 import API from '../../API';
 
 export default ({
   match: {
-    params: { matchId },
+    params: { gameName, matchId },
   },
 }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -19,8 +20,7 @@ export default ({
     );
     localStorage.setItem('player', JSON.stringify(fetchedPlayer));
     setPlayer(fetchedPlayer);
-    API.joinMatch(fetchedPlayer.id, matchId)
-      .then();
+    API.joinMatch(fetchedPlayer.id, matchId).then();
     setIsLoading(false);
   };
 
@@ -39,6 +39,9 @@ export default ({
             match id:
             {matchId}
           </div>
+          <Link to={`/game/${gameName}/match/${matchId}/pre-round/1`}>
+            Start Match
+          </Link>
           <UserList matchId={matchId} myUserId={player} />
         </>
       )}

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :matches, only: [:index, :create, :join] do
     put 'join', on: :member
     get 'players', on: :member
+    get 'results', on: :member
   end
   resources :plays, only: [:create]
   resources :players, only: [:create] do

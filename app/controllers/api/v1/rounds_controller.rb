@@ -13,7 +13,7 @@ module Api
                  .each_with_index
                  .map { |image, index| { id: index, src: image } }
 
-        render json: { term: term.phrase, images: images, terms: multi_choice }
+        render json: { term: term.phrase, images: images, terms: multi_choice, rounds: game.rounds }
       end
     end
   end

@@ -35,6 +35,11 @@ class MatchesController < ApplicationController
     render json: match.players
   end
 
+  def results
+    match = Match.find(params.permit(:id)[:id])
+    render json: match.players
+  end
+
   private
 
   def match_params
