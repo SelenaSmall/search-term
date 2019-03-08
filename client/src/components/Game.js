@@ -43,7 +43,7 @@ class Game extends Component {
                           <p className="text-grey-darker text-base">
                             <Link
                               key={game.id}
-                              to={`/game/${game.id}/pre-round`}
+                              to={`/game/${game.id}/pre-match`}
                               className="game-button start-game-button"
                             >
                               Start Game
