@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<Fragment>
+  <Row
+    data-test-id="profile-steps"
+    tag="div"
+  >
+    <Step
+      done={true}
+      name="Id"
+      number="1"
+    />
+    <Step
+      name="Alias"
+      number="2"
+    />
+    <Step
+      name="Email"
+      number="3"
+    />
+    <Step
+      name="Avatar"
+      number="4"
+    />
+    <Step
+      name="Confirmation"
+      number="5"
+    />
+  </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Progress
+        max={100}
+        tag="div"
+        value="20"
+      />
+    </Col>
+  </Row>
+</Fragment>
+`;

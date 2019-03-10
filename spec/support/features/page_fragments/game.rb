@@ -19,5 +19,9 @@ module PageFragments
     def next_round
       browser.find('.next-round').click
     end
+
+    def update_profile
+      browser.find('[data-test-id="update-profile"]').click
+    end
   end
 end

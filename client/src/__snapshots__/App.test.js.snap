@@ -4,6 +4,7 @@ exports[`snapshot testing 1`] = `
 <div>
   <BrowserRouter>
     <_default />
+    <_default />
   </BrowserRouter>
   <_default />
 </div>

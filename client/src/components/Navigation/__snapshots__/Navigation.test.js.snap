@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<Navbar
+  color="light"
+  expand="md"
+  light={true}
+  tag="nav"
+>
+  <NavbarBrand
+    data-test-id="landing-page-link"
+    href="/"
+    tag="a"
+  >
+    Game
+  </NavbarBrand>
+  <Collapse
+    appear={false}
+    enter={true}
+    exit={true}
+    in={false}
+    isOpen={false}
+    mountOnEnter={false}
+    navbar={true}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    tag="div"
+    timeout={350}
+    unmountOnExit={false}
+  >
+    <Nav
+      className="ml-auto"
+      navbar={true}
+      tag="ul"
+      vertical={false}
+    >
+      <NavItem
+        tag="li"
+      >
+        <NavLink
+          data-test-id="update-profile"
+          tag={[Function]}
+          to="/profile"
+        >
+          Profile
+        </NavLink>
+      </NavItem>
+    </Nav>
+  </Collapse>
+</Navbar>
+`;

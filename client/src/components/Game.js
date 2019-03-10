@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import API from '../API';
 import './game.css';
+import Navigation from './Navigation';
 
 class Game extends Component {
   constructor(props) {

@@ -9,10 +9,12 @@ import MatchResults from './components/MatchResults';
 import Results from './components/Results';
 import Airport from './components/Airport';
 import Match from './components/Match';
+import Profile from './components/Profile';
 
 export default () => (
   <Switch>
     <Route exact path="/" component={Game} />
+    <Route exact path="/profile" component={Profile} />
     <Route exact path="/game/:gameName/pre-match" component={PreMatch} />
     <Route exact path="/game/:gameName/match/:matchId" component={Match} />
     <Route
