@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Spinner } from 'reactstrap';
 import API from '../../API';
 
 export default ({
@@ -26,7 +27,7 @@ export default ({
   return (
     <>
       {isLoading ? (
-        <div>loading...</div>
+        <Spinner color="primary" />
       ) : (
         results.map(player => (
           <dl key={player.id}>

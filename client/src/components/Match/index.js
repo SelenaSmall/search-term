@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import { Redirect } from 'react-router-dom';
+import { Spinner } from 'reactstrap';
 import UserList from '../UserList';
 import API from '../../API';
 
@@ -67,7 +68,7 @@ export default ({
       }}
       onReceived={handleReceivedPlay}
     >
-      {isLoading ? <div>loading ...</div> : content}
+      {isLoading ? <Spinner color="primary" /> : content}
     </ActionCableConsumer>
   );
 };

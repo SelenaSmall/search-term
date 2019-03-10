@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
+import { Spinner } from 'reactstrap';
 import API from '../../API';
 
 export default ({
@@ -60,7 +61,7 @@ export default ({
         ''
       )}
       {isLoading ? (
-        <div>loading...</div>
+        <Spinner color="primary" />
       ) : (
         <div>
           <dl>

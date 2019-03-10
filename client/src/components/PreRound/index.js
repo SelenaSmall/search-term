@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
+import { Spinner } from 'reactstrap';
 import API from '../../API';
 
 export default ({
@@ -47,7 +48,10 @@ export default ({
       ) : (
         <dl>
           <dt>remaining</dt>
-          <dd>{secondsRemaining}</dd>
+          <dd>
+            <Spinner color="primary" />
+            {secondsRemaining}
+          </dd>
           <dt>master player</dt>
           <dd>{JSON.stringify(masterPlayer)}</dd>
         </dl>
