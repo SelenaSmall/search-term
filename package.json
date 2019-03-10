@@ -2,7 +2,7 @@
   "name": "search-term",
   "version": "1.0.0",
   "engines": {
-    "node": "6.3.1"
+    "node": "10.15.2"
   },
   "scripts": {
     "build": "cd client && npm install && npm run build && cd ..",
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/SelenaSmall/search-term/issues"
   },
-  "homepage": "https://github.com/SelenaSmall/search-term#readme"
+  "homepage": "https://github.com/SelenaSmall/search-term#readme",
+  "devDependencies": {
+    "@prettier/plugin-ruby": "^0.8.0"
+  }
 }
