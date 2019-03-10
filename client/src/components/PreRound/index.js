@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
+import API from '../../API';
 
 export default ({
   match: {
@@ -8,6 +9,7 @@ export default ({
 }) => {
   const [secondsRemaining, setSecondsRemaining] = useState(4);
   const [startRound, setStartRound] = useState(false);
+  const [masterPlayer, setMasterPlayer] = useState(false);
 
   const tick = () => {
     // const { secondsRemaining } = this.state;
@@ -25,16 +27,30 @@ export default ({
     // this.setState({ interval });
   };
 
+  const fetchCommandingPlayer = async () => {
+    const data = await API.fetchCommandingPlayer(matchId);
+    setMasterPlayer(data);
+  };
+
   useEffect(() => {
     startTimer();
   });
+
+  useEffect(() => {
+    fetchCommandingPlayer();
+  }, []);
 
   return (
     <>
       {startRound ? (
         <Redirect to={`/game/${gameName}/match/${matchId}/round/${round}`} />
       ) : (
-        <div>{secondsRemaining}</div>
+        <dl>
+          <dt>remaining</dt>
+          <dd>{secondsRemaining}</dd>
+          <dt>master player</dt>
+          <dd>{JSON.stringify(masterPlayer)}</dd>
+        </dl>
       )}
     </>
   );

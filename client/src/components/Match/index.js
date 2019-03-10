@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ActionCableConsumer } from 'react-actioncable-provider';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import UserList from '../UserList';
 import API from '../../API';
 
@@ -10,6 +10,7 @@ export default ({
   },
 }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [startGame, setStartGame] = useState(false);
   const [player, setPlayer] = useState(() => localStorage.getItem(player));
 
   const fetchPlayer = async () => {
@@ -24,27 +25,49 @@ export default ({
     setIsLoading(false);
   };
 
+  const startMatch = () => {
+    API.startMatch(matchId, player.id);
+  };
+
   useEffect(() => {
     fetchPlayer();
   }, []);
 
+  const handleReceivedPlay = (response) => {
+    const {
+      play: { text },
+    } = response;
+    const match = /START MATCH/.exec(text);
+    if (match) {
+      setStartGame(true);
+    }
+  };
+
+  const content = startGame ? (
+    <Redirect to={`/game/${gameName}/match/${matchId}/pre-round/1`} />
+  ) : (
+    <>
+      <h1>Players waiting to start match</h1>
+      <div>
+        match id:
+        {matchId}
+      </div>
+      <button type="button" onClick={startMatch}>
+        Start Match
+      </button>
+      <UserList matchId={matchId} myUserId={player} />
+    </>
+  );
   return (
-    <ActionCableConsumer url="ws://localhost:4001/cable">
-      {isLoading ? (
-        <div>loading ...</div>
-      ) : (
-        <>
-          <h1>Players waiting to start match</h1>
-          <div>
-            match id:
-            {matchId}
-          </div>
-          <Link to={`/game/${gameName}/match/${matchId}/pre-round/1`}>
-            Start Match
-          </Link>
-          <UserList matchId={matchId} myUserId={player} />
-        </>
-      )}
+    <ActionCableConsumer
+      url="ws://localhost:4001/cable"
+      channel={{
+        channel: 'PlaysChannel',
+        match: matchId,
+      }}
+      onReceived={handleReceivedPlay}
+    >
+      {isLoading ? <div>loading ...</div> : content}
     </ActionCableConsumer>
   );
 };

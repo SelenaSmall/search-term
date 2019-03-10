@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     put 'join', on: :member
     get 'players', on: :member
     get 'results', on: :member
+    put 'start', on: :member
+    get 'commanding_player', on: :member
   end
   resources :plays, only: [:create]
   resources :players, only: [:create] do

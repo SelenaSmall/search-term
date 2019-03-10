@@ -8,13 +8,15 @@ class MatchesController < ApplicationController
 
   def create
     match = Match.new(match_params)
-    if match.save
+    if match.save!
       serialized_data = ActiveModelSerializers::Adapter::Json.new(
           MatchSerializer.new(match)
       ).serializable_hash
       # ActionCable.server.broadcast 'matches_channel', serialized_data
       # head :ok
       render json: serialized_data
+    else
+      render json: match.errors
     end
   end
 
@@ -38,6 +40,31 @@ class MatchesController < ApplicationController
   def results
     match = Match.find(params.permit(:id)[:id])
     render json: match.players
+  end
+
+  def start
+    match = Match.find(params[:id])
+    serialized_data = ActiveModelSerializers::Adapter::Json.new(
+      # TODO hack not even saving the play just creating it to serialize and it should really be a separate channel of players joining?
+      PlaySerializer.new(Play.new(match: match, text: "START MATCH"))
+    ).serializable_hash
+    if match.player
+      PlaysChannel.broadcast_to match, serialized_data
+      render json: match.player
+    else
+      match.player = Player.find(params[:player_id])
+      if match.save!
+    PlaysChannel.broadcast_to match, serialized_data
+        render json: match.player
+      else
+        render json: match.error
+      end
+    end
+  end
+
+  def commanding_player
+    match = Match.find(params[:id])
+    render json: match.player
   end
 
   private

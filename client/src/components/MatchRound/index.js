@@ -63,8 +63,13 @@ export default ({
         <div>loading...</div>
       ) : (
         <div>
-          <div>{secondsRemaining}</div>
-          {term}
+          <dl>
+            <dt>seconds remaining</dt>
+            <dd>{secondsRemaining}</dd>
+            <dt>term</dt>
+            <dd>{term}</dd>
+          </dl>
+          <dt />
           {JSON.stringify(images)}
           {JSON.stringify(terms)}
         </div>

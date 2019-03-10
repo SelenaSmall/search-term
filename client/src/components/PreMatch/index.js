@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-// import { newMatch } from '../../API/index';
 import newMatch from '../../API/new-match';
 
 const PreRound = ({
@@ -26,7 +25,6 @@ const PreRound = ({
           <button
             type="button"
             onClick={() => {
-              console.log('new match');
               newMatch().then((response) => {
                 const {
                   match: { id: matchId },

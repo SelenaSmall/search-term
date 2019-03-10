@@ -25,7 +25,16 @@ export default ({
   }, []);
   return (
     <>
-      {isLoading ? <div>loading...</div> : <div>{JSON.stringify(results)}</div>}
+      {isLoading ? (
+        <div>loading...</div>
+      ) : (
+        results.map(player => (
+          <dl key={player.id}>
+            <dt>player</dt>
+            <dd>{JSON.stringify(player)}</dd>
+          </dl>
+        ))
+      )}
     </>
   );
 };
