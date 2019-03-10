@@ -1,6 +1,14 @@
 import React from 'react';
 import {
- Badge, Col, Row, Progress 
+  Badge,
+  Col,
+  Row,
+  Progress,
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
 } from 'reactstrap';
 import styled from 'styled-components';
 
@@ -48,6 +56,23 @@ export default () => (
     <Row>
       <Col>
         <Progress value="20" />
+      </Col>
+    </Row>
+    <Row>
+      <Col>
+        <Form>
+          <FormGroup>
+            <Label>Alias</Label>
+            <Input
+              type="text"
+              name="alias"
+              placeholder="alias to be seen by everyone"
+            />
+          </FormGroup>
+          <Button type="submit" color="primary">
+            Next
+          </Button>
+        </Form>
       </Col>
     </Row>
   </>

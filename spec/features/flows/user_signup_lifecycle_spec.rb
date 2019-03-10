@@ -38,6 +38,7 @@ feature 'User signup', js: true do
       end
 
       And 'they add the alias "princess"' do
+        pending 'no way to set alias'
         focus_on(:profile).set_alias("princess")
         focus_on(:profile).submit
       end

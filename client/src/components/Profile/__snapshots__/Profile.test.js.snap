@@ -50,5 +50,56 @@ exports[`renders without crashing 1`] = `
       />
     </Col>
   </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Form
+        tag="form"
+      >
+        <FormGroup
+          tag="div"
+        >
+          <Label
+            tag="label"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+          >
+            Alias
+          </Label>
+          <Input
+            name="alias"
+            placeholder="alias to be seen by everyone"
+            type="text"
+          />
+        </FormGroup>
+        <Button
+          color="primary"
+          tag="button"
+          type="submit"
+        >
+          Next
+        </Button>
+      </Form>
+    </Col>
+  </Row>
 </Fragment>
 `;
